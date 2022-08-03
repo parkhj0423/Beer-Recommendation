@@ -71,6 +71,130 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21CF566289AB7EB00A0291B /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF56F289AB85600A0291B /* DTO */,
+				D21CF56E289AB85100A0291B /* DataSource */,
+				D21CF570289AB86100A0291B /* Repository */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		D21CF567289AB7F300A0291B /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF56B289AB82F00A0291B /* Entity */,
+				D21CF56C289AB83600A0291B /* UseCase */,
+			);
+			path = DomainLayer;
+			sourceTree = "<group>";
+		};
+		D21CF568289AB80000A0291B /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF569289AB80F00A0291B /* View */,
+				D21CF56A289AB81300A0291B /* ViewModel */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		D21CF569289AB80F00A0291B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D21CF56A289AB81300A0291B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D21CF56B289AB82F00A0291B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D21CF56C289AB83600A0291B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF56D289AB83F00A0291B /* RepositoryInterface */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		D21CF56D289AB83F00A0291B /* RepositoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RepositoryInterface;
+			sourceTree = "<group>";
+		};
+		D21CF56E289AB85100A0291B /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		D21CF56F289AB85600A0291B /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		D21CF570289AB86100A0291B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D21CF571289AB87900A0291B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF572289AB87F00A0291B /* CommonUtil */,
+				D21CF573289AB88D00A0291B /* UiUtil */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D21CF572289AB87F00A0291B /* CommonUtil */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommonUtil;
+			sourceTree = "<group>";
+		};
+		D21CF573289AB88D00A0291B /* UiUtil */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF575289ABA0400A0291B /* Component */,
+				D21CF574289AB9F700A0291B /* Extension */,
+			);
+			path = UiUtil;
+			sourceTree = "<group>";
+		};
+		D21CF574289AB9F700A0291B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D21CF575289ABA0400A0291B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		D2B36D3F2890DEB9009C5127 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +218,10 @@
 		D2B36D4A2890DEB9009C5127 /* Beer-Recommendation */ = {
 			isa = PBXGroup;
 			children = (
+				D21CF566289AB7EB00A0291B /* DataLayer */,
+				D21CF567289AB7F300A0291B /* DomainLayer */,
+				D21CF568289AB80000A0291B /* PresentationLayer */,
+				D21CF571289AB87900A0291B /* Utils */,
 				D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */,
 				D2B36D4D2890DEB9009C5127 /* ContentView.swift */,
 				D2B36D4F2890DEBA009C5127 /* Assets.xcassets */,
@@ -423,6 +551,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -435,7 +564,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -453,6 +582,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -465,7 +595,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
