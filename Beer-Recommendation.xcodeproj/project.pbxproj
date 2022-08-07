@@ -15,6 +15,9 @@
 		D2B36D5D2890DEBA009C5127 /* Beer_RecommendationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */; };
 		D2B36D672890DEBA009C5127 /* Beer_RecommendationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D662890DEBA009C5127 /* Beer_RecommendationUITests.swift */; };
 		D2B36D692890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D682890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift */; };
+		D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0A2289EC45B0003BA5F /* NetworkError.swift */; };
+		D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0A5289ED29F0003BA5F /* BeerDTO.swift */; };
+		D2BEF0A8289ED3900003BA5F /* BeerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0A7289ED3900003BA5F /* BeerDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,10 @@
 		D2B36D622890DEBA009C5127 /* Beer-RecommendationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Beer-RecommendationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D662890DEBA009C5127 /* Beer_RecommendationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationUITests.swift; sourceTree = "<group>"; };
 		D2B36D682890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D2BEF0A2289EC45B0003BA5F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		D2BEF0A4289ECBC70003BA5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D2BEF0A5289ED29F0003BA5F /* BeerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDTO.swift; sourceTree = "<group>"; };
+		D2BEF0A7289ED3900003BA5F /* BeerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +147,7 @@
 		D21CF56E289AB85100A0291B /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				D2BEF0A7289ED3900003BA5F /* BeerDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 		D21CF56F289AB85600A0291B /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				D2BEF0A5289ED29F0003BA5F /* BeerDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -170,7 +179,7 @@
 		D21CF572289AB87F00A0291B /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
-				D21CF576289AC9D000A0291B /* NetworkUtil.swift */,
+				D2BEF0A1289EC4480003BA5F /* Network */,
 			);
 			path = CommonUtil;
 			sourceTree = "<group>";
@@ -227,6 +236,7 @@
 				D21CF571289AB87900A0291B /* Utils */,
 				D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */,
 				D2B36D4D2890DEB9009C5127 /* ContentView.swift */,
+				D2BEF0A4289ECBC70003BA5F /* Info.plist */,
 				D2B36D4F2890DEBA009C5127 /* Assets.xcassets */,
 				D2B36D512890DEBA009C5127 /* Preview Content */,
 			);
@@ -256,6 +266,15 @@
 				D2B36D682890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift */,
 			);
 			path = "Beer-RecommendationUITests";
+			sourceTree = "<group>";
+		};
+		D2BEF0A1289EC4480003BA5F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D21CF576289AC9D000A0291B /* NetworkUtil.swift */,
+				D2BEF0A2289EC45B0003BA5F /* NetworkError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +408,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B36D4E2890DEB9009C5127 /* ContentView.swift in Sources */,
+				D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */,
+				D2BEF0A8289ED3900003BA5F /* BeerDataSource.swift in Sources */,
+				D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */,
 				D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */,
 				D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */,
 			);
@@ -552,6 +574,7 @@
 				DEVELOPMENT_TEAM = 27L86J7GQV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Beer-Recommendation/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -583,6 +606,7 @@
 				DEVELOPMENT_TEAM = 27L86J7GQV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Beer-Recommendation/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
