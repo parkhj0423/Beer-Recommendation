@@ -19,55 +19,55 @@ struct BeerDTO : Codable {
     let ebc: Int?
     let srm, ph: Double?
     let attenuation_level: Double?
-    let volume, boil_volume: BoilVolume
-    let method: Method?
-    let ingredients: Ingredients
+    let volume, boil_volume: BoilVolumeDTO
+    let method: MethodDTO?
+    let ingredients: IngredientsDTO
     let food_pairing: [String]
     let brewers_tips: String?
     let contributed_by: String?
 }
 
 // MARK: - BoilVolume
-struct BoilVolume : Codable  {
+struct BoilVolumeDTO : Codable  {
     let value: Double
     let unit: String
 }
 
 // MARK: - Ingredients
-struct Ingredients : Codable  {
-    let malt: [Malt]
-    let hops: [Hop]
+struct IngredientsDTO : Codable  {
+    let malt: [MaltDTO]
+    let hops: [HopDTO]
     let yeast: String?
 }
 
 // MARK: - Hop
-struct Hop : Codable  {
+struct HopDTO : Codable  {
     let name: String?
-    let amount: BoilVolume
+    let amount: BoilVolumeDTO
     let add: String?
     let attribute: String?
 }
 
 // MARK: - Malt
-struct Malt : Codable  {
+struct MaltDTO : Codable  {
     let name: String
-    let amount: BoilVolume
+    let amount: BoilVolumeDTO
 }
 
 // MARK: - Method
-struct Method : Codable  {
-    let mash_temp: [MashTemp]
-    let fermentation: Fermentation
+struct MethodDTO : Codable  {
+    let mash_temp: [MashTempDTO]
+    let fermentation: FermentationDTO
     let twist: String?
 }
 
 // MARK: - Fermentation
-struct Fermentation : Codable  {
-    let temp: BoilVolume
+struct FermentationDTO : Codable  {
+    let temp: BoilVolumeDTO
 }
 
 // MARK: - MashTemp
-struct MashTemp : Codable {
-    let temp: BoilVolume
+struct MashTempDTO : Codable {
+    let temp: BoilVolumeDTO
     let duration: Int?
 }

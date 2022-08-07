@@ -13,7 +13,12 @@ protocol BeerDataSourceInterface {
 
 public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
     func getRandomBeers() async throws -> [BeerDTO] {
-        let url : String = "beers/random"
+        let url : String = "beers/"
+        
+//        let parameters : [URLQueryItem] = [
+//            URLQueryItem(name: "page", value: "1"),
+//            URLQueryItem(name: "per_page", value: "5")
+//        ]
         
         return try await sendRequest(url: url, method: .GET)
     }

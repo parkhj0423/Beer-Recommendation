@@ -29,8 +29,9 @@ extension NetworkUtil {
         let baseUrl = dictionary["BASE_URL"] as! String
         
         // BASE_URL과 나머지 URL을 합친다.
-        var request = URLComponents(string: baseUrl + url)!
-        
+        guard var request = URLComponents(string: baseUrl + url) else {
+            throw NetworkError.invalidURLError
+        }
         
         // 쿼리 파라미터가 필요한 경우 추가한다. 없을경우 기본값을 nil
         if let parameters = parameters {
