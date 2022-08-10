@@ -20,9 +20,7 @@ public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
 //            URLQueryItem(name: "per_page", value: "5")
 //        ]
         
-        let result : [BeerDTO] = try await sendRequest(url: url, method: .GET)
-        print(result)
-        return result
+        return try await sendRequest(url: url, method: .GET)
     }
 
 }

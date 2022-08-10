@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - BeerDTO
 struct BeerDTO : Codable {
-    let idz: Int
+    let id: Int
     let name, tagline, first_brewed, description: String?
     let image_url: String?
     let abv: Double?
@@ -64,9 +64,8 @@ struct BeerDTO : Codable {
         
         let ingredientsEntity : IngredientsEntity = IngredientsEntity(malt: maltEntities, hops: hopEntities, yeast: ingredients.yeast)
             
-        
         return BeerEntity(
-                id: idz,
+                id: id,
                 name: name,
                 tagline: tagline,
                 firstBrewed: first_brewed,
@@ -89,8 +88,6 @@ struct BeerDTO : Codable {
                 contributedBy: contributed_by)
         
     }
-    
-    
 }
 
 // MARK: - BoilVolume
