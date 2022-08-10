@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    var viewModel = BeerDataSource()
+    @StateObject var viewModel = BeerViewModel(useCase: BeerUseCase(repository: BeerRepository(dataSource: BeerDataSource())))
     
     var body: some View {
-        VStack {
-            Text("Beer!")
-                .padding()
-        }
-        .task  {
-            do {
-                let data = try await viewModel.getRandomBeers()
-                print(data)
-                print(data.count)
-            } catch {
-                print(error)
+        NavigationView {
+            ScrollView(showsIndicators: false) {
+                ForEach(viewModel.beers) { beer in
+                    Text(beer.name ?? "없음")
+                }
             }
-           
+            .task {
+                do {
+                    try await viewModel.getAllBeers()
+                } catch {
+                    print(error)
+                }
+            }
+            
         }
         
             

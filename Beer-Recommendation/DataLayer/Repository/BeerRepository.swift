@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+final class BeerRepository : BeerRepositoryInterface {
+    
+    private let dataSource : BeerDataSourceInterface
+    
+    public init(dataSource : BeerDataSourceInterface) {
+        self.dataSource = dataSource
+    }
+    
+    
+    func getAllBeers() async throws -> [BeerEntity] {
+        return try await dataSource.getAllBeers()
+            .map({ beerDTO in
+                let beerEntity = beerDTO.toEntity()
+                return beerEntity
+            })
+    }
+
+}

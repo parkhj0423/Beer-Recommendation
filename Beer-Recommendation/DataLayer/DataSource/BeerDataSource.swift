@@ -8,11 +8,11 @@
 import Foundation
 
 protocol BeerDataSourceInterface {
-    func getRandomBeers() async throws -> [BeerDTO]
+    func getAllBeers() async throws -> [BeerDTO]
 }
 
 public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
-    func getRandomBeers() async throws -> [BeerDTO] {
+    func getAllBeers() async throws -> [BeerDTO] {
         let url : String = "beers/"
         
 //        let parameters : [URLQueryItem] = [
@@ -20,7 +20,9 @@ public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
 //            URLQueryItem(name: "per_page", value: "5")
 //        ]
         
-        return try await sendRequest(url: url, method: .GET)
+        let result : [BeerDTO] = try await sendRequest(url: url, method: .GET)
+        print(result)
+        return result
     }
 
 }

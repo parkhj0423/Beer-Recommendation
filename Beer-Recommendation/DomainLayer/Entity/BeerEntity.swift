@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - BeerEntity
-struct BeerEntity : Codable {
+struct BeerEntity : Codable, Identifiable {
     let id: Int
     let name, tagline, firstBrewed, description: String?
     let imageUrl: String?

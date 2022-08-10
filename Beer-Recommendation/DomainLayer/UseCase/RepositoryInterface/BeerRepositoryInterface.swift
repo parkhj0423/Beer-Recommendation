@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol BeerRepositoryInterface {
+    func getAllBeers() async throws -> [BeerEntity]
+}
