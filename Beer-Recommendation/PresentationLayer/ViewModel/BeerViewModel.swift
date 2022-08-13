@@ -24,13 +24,11 @@ final class BeerViewModel : ObservableObject {
     public func getAllBeers() async throws {
         do {
             let beers = try await useCase.getAllBeers()
-    //        print(beers)
             self.beers = beers
-        } catch NetworkError.decodingError {
-            print("#####")
-            print("#####")
-        } catch NetworkError.badRequestError {
-            print(NetworkError.badRequestError.errorMessage)
+        } catch NetworkError.internetConnectionError {
+            print(NetworkError.internetConnectionError.errorMessage)
+        } catch  {
+            print("Fail to load data")
         }
     }
 }

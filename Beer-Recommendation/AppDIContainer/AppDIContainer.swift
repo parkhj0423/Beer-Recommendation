@@ -17,5 +17,4 @@ struct AppDIContainer {
         
         return beerViewModel
     }
-
 }

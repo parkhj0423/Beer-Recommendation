@@ -11,7 +11,7 @@ import SwiftUI
 struct Beer_RecommendationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: AppDIContainer.getBeerDependencies())
+            BeerListView(viewModel: AppDIContainer.getBeerDependencies())
         }
     }
 }

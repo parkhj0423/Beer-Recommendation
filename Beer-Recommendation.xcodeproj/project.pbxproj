@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
-		D2B36D4E2890DEB9009C5127 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* ContentView.swift */; };
+		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
 		D2B36D532890DEBA009C5127 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D522890DEBA009C5127 /* Preview Assets.xcassets */; };
 		D2B36D5D2890DEBA009C5127 /* Beer_RecommendationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */; };
@@ -47,7 +47,7 @@
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beer-Recommendation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationApp.swift; sourceTree = "<group>"; };
-		D2B36D4D2890DEB9009C5127 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2B36D4D2890DEB9009C5127 /* BeerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListView.swift; sourceTree = "<group>"; };
 		D2B36D4F2890DEBA009C5127 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B36D522890DEBA009C5127 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2B36D582890DEBA009C5127 /* Beer-RecommendationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Beer-RecommendationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +123,7 @@
 		D21CF569289AB80F00A0291B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D2B36D4D2890DEB9009C5127 /* ContentView.swift */,
+				D2B36D4D2890DEB9009C5127 /* BeerListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -436,7 +436,7 @@
 				D2BEF0B2289FA1870003BA5F /* BeerRepository.swift in Sources */,
 				D2BEF0AC289FA1630003BA5F /* BeerViewModel.swift in Sources */,
 				D2BEF0B0289FA17D0003BA5F /* BeerUseCase.swift in Sources */,
-				D2B36D4E2890DEB9009C5127 /* ContentView.swift in Sources */,
+				D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */,
 				D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */,
 				D2BEF0A8289ED3900003BA5F /* BeerDataSource.swift in Sources */,
 				D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */,
