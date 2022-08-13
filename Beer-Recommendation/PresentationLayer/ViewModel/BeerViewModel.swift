@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+// MainActor를 붙여주면 구독된 값이 백그라운드 쓰레드에서 바뀌는것을 허용하지 않는다는 오류가 사라짐
+@MainActor
 final class BeerViewModel : ObservableObject {
     
     private let useCase: BeerUseCaseInterface
@@ -20,9 +22,15 @@ final class BeerViewModel : ObservableObject {
     }
     
     public func getAllBeers() async throws {
-        let beers = try await useCase.getAllBeers()
-//        print(beers)
-        self.beers = beers
-        
+        do {
+            let beers = try await useCase.getAllBeers()
+    //        print(beers)
+            self.beers = beers
+        } catch NetworkError.decodingError {
+            print("#####")
+            print("#####")
+        } catch NetworkError.badRequestError {
+            print(NetworkError.badRequestError.errorMessage)
+        }
     }
 }

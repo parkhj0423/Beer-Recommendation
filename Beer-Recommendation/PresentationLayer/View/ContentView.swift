@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = BeerViewModel(useCase: BeerUseCase(repository: BeerRepository(dataSource: BeerDataSource())))
+    @StateObject var viewModel : BeerViewModel
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 ForEach(viewModel.beers) { beer in
+                        
+                    AsyncImage(url: URL(string: beer.imageUrl ?? ""))
+                    
                     Text(beer.name ?? "없음")
                 }
             }
@@ -28,11 +31,5 @@ struct ContentView: View {
         }
         
             
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

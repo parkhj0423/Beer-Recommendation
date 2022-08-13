@@ -22,6 +22,4 @@ final class BeerUseCase : BeerUseCaseInterface {
     func getAllBeers() async throws -> [BeerEntity] {
         return try await repository.getAllBeers()
     }
-    
-    
 }
