@@ -18,6 +18,7 @@ struct BeerListView: View {
                         AsyncImage(url: url) { image in
                             image
                                 .resizable()
+                                .scaledToFit()
                                 .frame(width : 100, height : 200)
                         } placeholder: {
                             ProgressView()
@@ -28,16 +29,10 @@ struct BeerListView: View {
                         .font(.system(size: 20, weight: .bold))
                 }
             }
-            .task {
-                do {
-                    try await viewModel.getAllBeers()
-                } catch {
-                    print(error)
-                }
+            .task() {
+                try? await viewModel.getAllBeers()
             }
-            
         }
-        
-            
+        .showLoadingView(isLoading: viewModel.isLoading)   
     }
 }
