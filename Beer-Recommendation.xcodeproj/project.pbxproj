@@ -26,6 +26,7 @@
 		D2BEF0CA28A7E5220003BA5F /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0C928A7E5220003BA5F /* AppDIContainer.swift */; };
 		D2BEF0CD28A93CEB0003BA5F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0CC28A93CEB0003BA5F /* View.swift */; };
 		D2BEF0CF28A93E0D0003BA5F /* LoadingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0CE28A93E0D0003BA5F /* LoadingViewModifier.swift */; };
+		D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		D2BEF0C928A7E5220003BA5F /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		D2BEF0CC28A93CEB0003BA5F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		D2BEF0CE28A93E0D0003BA5F /* LoadingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewModifier.swift; sourceTree = "<group>"; };
+		D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModalViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BEF0CE28A93E0D0003BA5F /* LoadingViewModifier.swift */,
+				D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */,
 				D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */,
 				D2BEF0CA28A7E5220003BA5F /* AppDIContainer.swift in Sources */,
+				D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */,
 				D2BEF0AE289FA1750003BA5F /* BeerRepositoryInterface.swift in Sources */,
 				D2BEF0AA289FA0730003BA5F /* BeerEntity.swift in Sources */,
 				D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */,
