@@ -33,6 +33,7 @@ struct BeerListView: View {
                 try? await viewModel.getAllBeers()
             }
         }
+        .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)   
     }
 }

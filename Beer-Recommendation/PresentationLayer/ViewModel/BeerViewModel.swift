@@ -18,24 +18,32 @@ final class BeerViewModel : ObservableObject {
     @Published public var beers : [BeerEntity] = []
     
     @Published public var isLoading : Bool = false
+    @Published public var viewModelError : BeerViewModelError?
     
     init(useCase : BeerUseCaseInterface) {
         self.useCase = useCase
     }
     
+    public func cleanError() {
+        self.viewModelError = nil
+    }
+    
     public func getAllBeers() async throws {
+        cleanError()
         do {
             self.isLoading = true
             
             let beers = try await useCase.getAllBeers()
             self.beers = beers
-            
+            self.viewModelError = .failToLoadData
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
             print(NetworkError.internetConnectionError.errorMessage)
             self.isLoading = false
+            self.viewModelError = .internetConnectionError
         } catch  {
             print("Fail to load data")
+            self.viewModelError = .failToLoadData
             self.isLoading = false
         }
     }
