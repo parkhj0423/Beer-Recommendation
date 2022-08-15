@@ -33,43 +33,51 @@ struct ErrorModalViewModifier<T : GenericError>: ViewModifier {
                                     .fill(Color.white)
                                     .overlay(
                                         VStack(spacing : 0) {
-                                            Spacer()
                                             
-                                            VStack(spacing : 20) {
-                                                Text(error.title)
-                                                    .font(.system(size: 20, weight: .bold))
-                                                    .font(.system(.headline))
-                                                Text(error.description)
-                                                    .font(.system(size: 17, weight: .medium))
-                                                    .font(.system(.caption))
-                                            }
+                                            errorContentsView(error: error)
                                             
-                                            Spacer()
-                                            
-                                            Rectangle()
-                                                .fill(Color.cyan)
-                                                .cornerRadius(15, corners: .bottomLeft)
-                                                .cornerRadius(15, corners: .bottomRight)
-                                                .frame(maxWidth : width / 5 * 4, maxHeight: 50, alignment: .bottom)
-                                                .overlay(
-                                                    Text("확인")
-                                                        .font(.system(size: 15, weight: .bold))
-                                                        .foregroundColor(Color.white)
-                                                )
-                                                .onTapGesture {
-                                                    onDismiss()
-                                                }
+                                            dismissButton()
                                         }
                                     )
                                     .frame(width: width / 5 * 4, height: height / 4)
                             }
-                            
                         }
-                        
                     }
                         .ignoresSafeArea()
                 )
-            
         }
     }
+    
+    @ViewBuilder
+    private func errorContentsView(error : T) -> some View {
+        Spacer()
+        
+        VStack(spacing : 20) {
+            Text(error.title)
+                .font(.system(size: 20, weight: .bold))
+                .font(.system(.headline))
+            Text(error.description)
+                .font(.system(size: 17, weight: .medium))
+                .font(.system(.caption))
+        }
+        
+        Spacer()
+    }
+    
+    private func dismissButton() -> some View {
+        Rectangle()
+            .fill(Color.cyan)
+            .cornerRadius(15, corners: .bottomLeft)
+            .cornerRadius(15, corners: .bottomRight)
+            .frame(maxWidth : .infinity, maxHeight: 50, alignment: .bottom)
+            .overlay(
+                Text("확인")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(Color.white)
+            )
+            .onTapGesture {
+                onDismiss()
+            }
+    }
+    
 }
