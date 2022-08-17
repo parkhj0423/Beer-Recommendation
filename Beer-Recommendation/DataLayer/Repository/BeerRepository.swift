@@ -23,5 +23,13 @@ final class BeerRepository : BeerRepositoryInterface {
                 return beerEntity
             })
     }
+    
+    func getRandomBeer() async throws -> [BeerEntity] {
+        return try await dataSource.getRandomBeer()
+            .map({ beerDTO in
+                let beerEntity = beerDTO.toEntity()
+                return beerEntity
+            })
+    }
 
 }

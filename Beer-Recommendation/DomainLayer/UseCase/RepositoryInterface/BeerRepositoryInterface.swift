@@ -9,4 +9,5 @@ import Foundation
 
 protocol BeerRepositoryInterface {
     func getAllBeers() async throws -> [BeerEntity]
+    func getRandomBeer() async throws -> [BeerEntity]
 }

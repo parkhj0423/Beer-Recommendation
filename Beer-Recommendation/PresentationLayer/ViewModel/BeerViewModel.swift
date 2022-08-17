@@ -16,6 +16,7 @@ final class BeerViewModel : ObservableObject {
     private var bag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     @Published public var beers : [BeerEntity] = []
+    @Published public var randomBeer : [BeerEntity] = []
     
     @Published public var isLoading : Bool = false
     @Published public var viewModelError : BeerViewModelError?
@@ -36,6 +37,25 @@ final class BeerViewModel : ObservableObject {
             let beers = try await useCase.getAllBeers()
             self.beers = beers
             self.viewModelError = .failToLoadData
+            self.isLoading = false
+        } catch NetworkError.internetConnectionError {
+            print(NetworkError.internetConnectionError.errorMessage)
+            self.isLoading = false
+            self.viewModelError = .internetConnectionError
+        } catch  {
+            print("Fail to load data")
+            self.viewModelError = .failToLoadData
+            self.isLoading = false
+        }
+    }
+    
+    
+    public func getRandomBeer() async throws {
+        do {
+            self.isLoading = true
+            let randomBeer = try await useCase.getRandomBeer()
+            print(randomBeer)
+            self.randomBeer = randomBeer
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
             print(NetworkError.internetConnectionError.errorMessage)

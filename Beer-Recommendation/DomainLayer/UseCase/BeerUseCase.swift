@@ -9,6 +9,7 @@ import Foundation
 
 protocol BeerUseCaseInterface {
     func getAllBeers() async throws -> [BeerEntity]
+    func getRandomBeer() async throws -> [BeerEntity]
 }
 
 final class BeerUseCase : BeerUseCaseInterface {
@@ -21,5 +22,9 @@ final class BeerUseCase : BeerUseCaseInterface {
     
     func getAllBeers() async throws -> [BeerEntity] {
         return try await repository.getAllBeers()
+    }
+    
+    func getRandomBeer() async throws -> [BeerEntity] {
+        return try await repository.getRandomBeer()
     }
 }

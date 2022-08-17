@@ -13,6 +13,9 @@ struct BeerListView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
+                
+                Text(viewModel.randomBeer.first?.name ?? "")
+                Divider()
                 ForEach(viewModel.beers) { beer in
                     if let url = URL(string: beer.imageUrl ?? "") {
                         AsyncImage(url: url) { image in
@@ -31,6 +34,7 @@ struct BeerListView: View {
             }
             .task() {
                 try? await viewModel.getAllBeers()
+                try? await viewModel.getRandomBeer()
             }
         }
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
