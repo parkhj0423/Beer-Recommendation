@@ -27,4 +27,21 @@ final class SheetManager : ObservableObject {
     
     @Published private var sheetType : SheetType?
     @Published private var sheetState : SheetState?
+    
+    public func changeSheet(type : SheetType, sheet : SheetState) {
+        if self.sheetState != nil {
+            self.sheetState = nil
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.sheetType = type
+            self.sheetState = sheet
+        }
+        
+    }
+    
+    public func dismissSheet() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.sheetState = nil
+        }
+    }
 }
