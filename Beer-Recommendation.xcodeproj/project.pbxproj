@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
+		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
+		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beer-Recommendation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationApp.swift; sourceTree = "<group>"; };
 		D2B36D4D2890DEB9009C5127 /* BeerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		D21CF56A289AB81300A0291B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D2445B8C28AFCC9B001FB9DE /* EnvironmentObject */,
 				D2BEF0D228AA3A820003BA5F /* ViewModelError */,
 				D2BEF0AB289FA1630003BA5F /* BeerViewModel.swift */,
 			);
@@ -237,6 +240,14 @@
 			children = (
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		D2445B8C28AFCC9B001FB9DE /* EnvironmentObject */ = {
+			isa = PBXGroup;
+			children = (
+				D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */,
+			);
+			path = EnvironmentObject;
 			sourceTree = "<group>";
 		};
 		D2B36D3F2890DEB9009C5127 = {
@@ -465,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2BEF0B2289FA1870003BA5F /* BeerRepository.swift in Sources */,
+				D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */,
 				D2BEF0AC289FA1630003BA5F /* BeerViewModel.swift in Sources */,
 				D2BEF0B0289FA17D0003BA5F /* BeerUseCase.swift in Sources */,
 				D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */,

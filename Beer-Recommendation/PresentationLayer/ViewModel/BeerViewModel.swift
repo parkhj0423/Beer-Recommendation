@@ -36,14 +36,11 @@ final class BeerViewModel : ObservableObject {
             
             let beers = try await useCase.getAllBeers()
             self.beers = beers
-            self.viewModelError = .failToLoadData
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
-            print(NetworkError.internetConnectionError.errorMessage)
             self.isLoading = false
             self.viewModelError = .internetConnectionError
         } catch  {
-            print("Fail to load data")
             self.viewModelError = .failToLoadData
             self.isLoading = false
         }
@@ -62,7 +59,6 @@ final class BeerViewModel : ObservableObject {
             self.isLoading = false
             self.viewModelError = .internetConnectionError
         } catch  {
-            print("Fail to load data")
             self.viewModelError = .failToLoadData
             self.isLoading = false
         }

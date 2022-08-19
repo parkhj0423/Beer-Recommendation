@@ -16,12 +16,12 @@ public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
     func getAllBeers() async throws -> [BeerDTO] {
         let url : String = "beers/"
         
-//        let parameters : [URLQueryItem] = [
-//            URLQueryItem(name: "page", value: "1"),
-//            URLQueryItem(name: "per_page", value: "5")
-//        ]
+        let parameters : [URLQueryItem] = [
+            URLQueryItem(name: "page", value: "1"),
+            URLQueryItem(name: "per_page", value: "5")
+        ]
         
-        return try await sendRequest(url: url, method: .GET)
+        return try await sendRequest(url: url, method: .GET, parameters : parameters)
     }
     
     func getRandomBeer() async throws -> [BeerDTO] {
