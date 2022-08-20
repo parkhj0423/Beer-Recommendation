@@ -25,8 +25,16 @@ public enum SheetState : String,  Identifiable {
 
 final class SheetManager : ObservableObject {
     
-    @Published private var sheetType : SheetType?
-    @Published private var sheetState : SheetState?
+    @Published public var sheetType : SheetType? {
+        didSet {
+            if sheetType == .regularSheet {
+                self.isRegularSheet = true
+            }
+        }
+    }
+    @Published public var sheetState : SheetState?
+    
+    @Published public var isRegularSheet : Bool = false
     
     public func changeSheet(type : SheetType, sheet : SheetState) {
         if self.sheetState != nil {
@@ -41,6 +49,7 @@ final class SheetManager : ObservableObject {
     
     public func dismissSheet() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.sheetType = nil
             self.sheetState = nil
         }
     }

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Beer_RecommendationApp: App {
+    let sheetManager : SheetManager = SheetManager()
+    
     var body: some Scene {
         WindowGroup {
             BeerListView(viewModel: AppDIContainer.getBeerDependencies())
+                .environmentObject(sheetManager)
         }
     }
 }

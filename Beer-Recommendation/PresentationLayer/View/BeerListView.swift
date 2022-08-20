@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct BeerListView: View {
+    @EnvironmentObject var sheetManager : SheetManager
+    
     @StateObject var viewModel : BeerViewModel
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
+                Button {
+                    sheetManager.changeSheet(type: .regularSheet, sheet: .comment)
+                } label: {
+                    Text("show sheet")
+                }
                 
                 Text(viewModel.randomBeer.first?.name ?? "")
                 Divider()
@@ -37,6 +44,7 @@ struct BeerListView: View {
                 try? await viewModel.getRandomBeer()
             }
         }
+        .showModal(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)   
     }

@@ -17,6 +17,10 @@ extension View {
         modifier(ErrorModalViewModifier(error: error, onDismiss: onDismiss))
     }
     
+    func showModal(sheetManager : SheetManager) -> some View {
+        modifier(CustomModalViewModifier(sheetManager: sheetManager))
+    }
+    
     func cornerRadius(_ radius:CGFloat, corners:UIRectCorner)-> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners) )
     }
