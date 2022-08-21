@@ -8,9 +8,33 @@
 import SwiftUI
 
 struct CommentView: View {
+    
+    @EnvironmentObject var sheetManager : SheetManager
+    
     var body: some View {
-        Text("Comment View!")
+        NavigationView {
+            VStack {
+                Text("Comment View!")
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    dismissButton()
+                }
+            }
+        }
     }
+    
+    private func dismissButton() -> some View {
+        Button {
+            sheetManager.dismissSheet()
+        } label: {
+            Image(systemName: "xmark")
+                .resizable()
+                .frame(width: 14, height: 14)
+                .padding(EdgeInsets(top: 9, leading: 9, bottom: 9, trailing: 9))
+        }
+    }
+    
 }
 
 struct CommentView_Previews: PreviewProvider {

@@ -19,20 +19,24 @@ struct CustomModal: View {
                 Text("miniSheet")
             }
         }
-//        .fullScreenCover(isPresented: sheetManager.sheetType) { state in
-//            switch state {
+//        .fullScreenCover(isPresented: $sheetManager.isFullScreenSheet, onDismiss: {
+//            sheetManager.dismissSheet()
+//        }) {
+//            switch sheetManager.sheetState {
 //            default :
 //                CommentView()
 //            }
 //
 //        }
-        .sheet(isPresented: $sheetManager.isRegularSheet) {
-            switch sheetManager.sheetState {
-            default :
-                CommentView()
-            }
-            
-        }
+//        .sheet(isPresented: $sheetManager.isRegularSheet, onDismiss: {
+//            sheetManager.dismissSheet()
+//        }) {
+//            switch sheetManager.sheetState {
+//            default :
+//                CommentView()
+//            }
+//            
+//        }
         
         
     }

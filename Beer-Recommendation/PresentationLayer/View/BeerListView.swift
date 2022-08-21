@@ -18,7 +18,24 @@ struct BeerListView: View {
                 Button {
                     sheetManager.changeSheet(type: .regularSheet, sheet: .comment)
                 } label: {
-                    Text("show sheet")
+                    Text("show RegularSheet")
+                }
+                Button {
+                    sheetManager.changeSheet(type: .fullScreenSheet, sheet: .comment)
+                } label: {
+                    Text("show FullScreenSheet")
+                }
+
+                Button {
+                    sheetManager.changeSheet(type: .bottomSheet, sheet: .comment)
+                } label: {
+                    Text("show BottomSheet")
+                }
+                
+                Button {
+                    sheetManager.changeSheet(type: .miniSheet, sheet: .comment)
+                } label: {
+                    Text("show MiniSheet")
                 }
                 
                 Text(viewModel.randomBeer.first?.name ?? "")

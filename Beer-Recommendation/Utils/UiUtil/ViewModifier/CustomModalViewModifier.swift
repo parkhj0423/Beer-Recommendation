@@ -12,13 +12,45 @@ struct CustomModalViewModifier : ViewModifier {
     @ObservedObject var sheetManager : SheetManager
     
     func body(content: Content) -> some View {
-        content
-            .overlay(alignment: .bottom) {
-                if sheetManager.sheetState != nil {
-                    CustomModal(sheetManager: sheetManager)
+        GeometryReader { geomtry in
+            let height = geomtry.size.height
+            content
+                .overlay(alignment: .bottom) {
+                    if sheetManager.sheetType == .bottomSheet {
+                        
+                        Rectangle()
+                            .overlay(CommentView())
+                            .cornerRadius(10 , corners: [.topLeft, .topRight])
+                            .frame(maxWidth : .infinity, maxHeight: height / 2, alignment: .bottom)
+                        
+                        
+                            .transition(.move(edge: .bottom))
+                        
+                        
+                    } else if sheetManager.sheetType == .miniSheet {
+                        Text("miniSheet")
+                    }
                 }
-            }
-            .ignoresSafeArea()
+                .fullScreenCover(isPresented: $sheetManager.isFullScreenSheet, onDismiss: {
+                    sheetManager.dismissSheet()
+                }) {
+                    switch sheetManager.sheetState {
+                    default :
+                        CommentView()
+                    }
+                    
+                }
+                .sheet(isPresented: $sheetManager.isRegularSheet, onDismiss: {
+                    sheetManager.dismissSheet()
+                }) {
+                    switch sheetManager.sheetState {
+                    default :
+                        CommentView()
+                    }
+                    
+                }
+        }
+        .ignoresSafeArea()
         
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 public enum SheetType : String {
     case bottomSheet
@@ -29,18 +30,23 @@ final class SheetManager : ObservableObject {
         didSet {
             if sheetType == .regularSheet {
                 self.isRegularSheet = true
+            } else if sheetType == .fullScreenSheet {
+                self.isFullScreenSheet = true
             }
         }
     }
     @Published public var sheetState : SheetState?
     
     @Published public var isRegularSheet : Bool = false
+    @Published public var isFullScreenSheet : Bool = false
+    @Published public var isBottomSheet : Bool = false
+    @Published public var isMiniSheet : Bool = false
     
     public func changeSheet(type : SheetType, sheet : SheetState) {
         if self.sheetState != nil {
             self.sheetState = nil
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        withAnimation {
             self.sheetType = type
             self.sheetState = sheet
         }
@@ -48,9 +54,12 @@ final class SheetManager : ObservableObject {
     }
     
     public func dismissSheet() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.sheetType = nil
-            self.sheetState = nil
-        }
+        self.sheetType = nil
+        self.sheetState = nil
+        self.isFullScreenSheet = false
+        self.isRegularSheet = false
+        self.isBottomSheet = false
+        self.isMiniSheet = false
+        
     }
 }
