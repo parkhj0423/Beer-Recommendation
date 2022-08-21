@@ -20,7 +20,7 @@ struct CustomSheetViewModifier : ViewModifier {
                     if sheetManager.sheetType == .bottomSheet {
                         switch sheetManager.sheetState {
                         default :
-                            bottomSheetView(content: CommentView(), height: height / 4)
+                            bottomSheetView(content: CommentView(), height: height / 3)
                         }
                     }
                 }

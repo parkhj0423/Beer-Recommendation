@@ -11,6 +11,7 @@
 		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
 		D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */; };
 		D2445B9428B13DBA001FB9DE /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9328B13DBA001FB9DE /* CommentView.swift */; };
+		D2445B9728B27A27001FB9DE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9628B27A27001FB9DE /* CustomTabBar.swift */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetViewModifier.swift; sourceTree = "<group>"; };
 		D2445B9328B13DBA001FB9DE /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		D2445B9628B27A27001FB9DE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beer-Recommendation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationApp.swift; sourceTree = "<group>"; };
 		D2B36D4D2890DEB9009C5127 /* BeerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		D21CF569289AB80F00A0291B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2445B9528B27A19001FB9DE /* TabBar */,
 				D2B36D4D2890DEB9009C5127 /* BeerListView.swift */,
 				D2445B9328B13DBA001FB9DE /* CommentView.swift */,
 			);
@@ -253,6 +256,14 @@
 				D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */,
 			);
 			path = EnvironmentObject;
+			sourceTree = "<group>";
+		};
+		D2445B9528B27A19001FB9DE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D2445B9628B27A27001FB9DE /* CustomTabBar.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		D2B36D3F2890DEB9009C5127 = {
@@ -497,6 +508,7 @@
 				D2BEF0CA28A7E5220003BA5F /* AppDIContainer.swift in Sources */,
 				D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */,
 				D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */,
+				D2445B9728B27A27001FB9DE /* CustomTabBar.swift in Sources */,
 				D2BEF0AE289FA1750003BA5F /* BeerRepositoryInterface.swift in Sources */,
 				D2BEF0AA289FA0730003BA5F /* BeerEntity.swift in Sources */,
 				D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */,
