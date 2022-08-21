@@ -13,7 +13,6 @@ public enum SheetType : String {
     case bottomSheet
     case fullScreenSheet
     case regularSheet
-    case miniSheet
 }
 
 public enum SheetState : String,  Identifiable {
@@ -40,26 +39,21 @@ final class SheetManager : ObservableObject {
     @Published public var isRegularSheet : Bool = false
     @Published public var isFullScreenSheet : Bool = false
     @Published public var isBottomSheet : Bool = false
-    @Published public var isMiniSheet : Bool = false
     
     public func changeSheet(type : SheetType, sheet : SheetState) {
-        if self.sheetState != nil {
-            self.sheetState = nil
-        }
         withAnimation {
             self.sheetType = type
             self.sheetState = sheet
         }
-        
     }
     
     public func dismissSheet() {
-        self.sheetType = nil
-        self.sheetState = nil
-        self.isFullScreenSheet = false
-        self.isRegularSheet = false
-        self.isBottomSheet = false
-        self.isMiniSheet = false
-        
+        withAnimation {
+            self.sheetType = nil
+            self.sheetState = nil
+            self.isFullScreenSheet = false
+            self.isRegularSheet = false
+            self.isBottomSheet = false
+        }
     }
 }

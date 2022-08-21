@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
 		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
-		D2445B9028B13814001FB9DE /* CustomModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8F28B13814001FB9DE /* CustomModal.swift */; };
-		D2445B9228B138B7001FB9DE /* CustomModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomModalViewModifier.swift */; };
+		D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */; };
 		D2445B9428B13DBA001FB9DE /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9328B13DBA001FB9DE /* CommentView.swift */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
@@ -55,8 +54,7 @@
 /* Begin PBXFileReference section */
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
-		D2445B8F28B13814001FB9DE /* CustomModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModal.swift; sourceTree = "<group>"; };
-		D2445B9128B138B7001FB9DE /* CustomModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalViewModifier.swift; sourceTree = "<group>"; };
+		D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetViewModifier.swift; sourceTree = "<group>"; };
 		D2445B9328B13DBA001FB9DE /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beer-Recommendation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationApp.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 				D21CF574289AB9F700A0291B /* Extension */,
 				D21CF575289ABA0400A0291B /* Component */,
 				D2BEF0D528AA3E6C0003BA5F /* ErrorModal.swift */,
-				D2445B8F28B13814001FB9DE /* CustomModal.swift */,
 			);
 			path = UiUtil;
 			sourceTree = "<group>";
@@ -341,7 +338,7 @@
 			children = (
 				D2BEF0CE28A93E0D0003BA5F /* LoadingViewModifier.swift */,
 				D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */,
-				D2445B9128B138B7001FB9DE /* CustomModalViewModifier.swift */,
+				D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -484,7 +481,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2445B9028B13814001FB9DE /* CustomModal.swift in Sources */,
 				D2BEF0B2289FA1870003BA5F /* BeerRepository.swift in Sources */,
 				D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */,
 				D2BEF0AC289FA1630003BA5F /* BeerViewModel.swift in Sources */,
@@ -499,7 +495,7 @@
 				D2445B9428B13DBA001FB9DE /* CommentView.swift in Sources */,
 				D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */,
 				D2BEF0CA28A7E5220003BA5F /* AppDIContainer.swift in Sources */,
-				D2445B9228B138B7001FB9DE /* CustomModalViewModifier.swift in Sources */,
+				D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */,
 				D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */,
 				D2BEF0AE289FA1750003BA5F /* BeerRepositoryInterface.swift in Sources */,
 				D2BEF0AA289FA0730003BA5F /* BeerEntity.swift in Sources */,

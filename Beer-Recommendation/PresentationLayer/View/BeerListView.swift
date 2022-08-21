@@ -32,11 +32,7 @@ struct BeerListView: View {
                     Text("show BottomSheet")
                 }
                 
-                Button {
-                    sheetManager.changeSheet(type: .miniSheet, sheet: .comment)
-                } label: {
-                    Text("show MiniSheet")
-                }
+                
                 
                 Text(viewModel.randomBeer.first?.name ?? "")
                 Divider()
@@ -61,7 +57,7 @@ struct BeerListView: View {
                 try? await viewModel.getRandomBeer()
             }
         }
-        .showModal(sheetManager: sheetManager)
+        .showSheet(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)   
     }
