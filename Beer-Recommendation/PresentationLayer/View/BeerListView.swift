@@ -15,25 +15,6 @@ struct BeerListView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                Button {
-                    sheetManager.changeSheet(type: .regularSheet, sheet: .comment)
-                } label: {
-                    Text("show RegularSheet")
-                }
-                Button {
-                    sheetManager.changeSheet(type: .fullScreenSheet, sheet: .comment)
-                } label: {
-                    Text("show FullScreenSheet")
-                }
-
-                Button {
-                    sheetManager.changeSheet(type: .bottomSheet, sheet: .comment)
-                } label: {
-                    Text("show BottomSheet")
-                }
-                
-                
-                
                 Text(viewModel.randomBeer.first?.name ?? "")
                 Divider()
                 ForEach(viewModel.beers) { beer in
