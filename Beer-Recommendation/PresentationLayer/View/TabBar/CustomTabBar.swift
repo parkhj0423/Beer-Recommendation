@@ -23,6 +23,7 @@ struct CustomTabBar: View {
                         .scaleEffect(selectedTab == tab ? 1.25 : 1)
                         .foregroundColor(selectedTab == tab ? .indigo : .gray)
                         .font(.system(size: 20))
+                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.1)) {
                                 selectedTab = tab

@@ -35,6 +35,7 @@
 		D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */; };
 		D2BEF0D428AA3A900003BA5F /* BeerViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D328AA3A900003BA5F /* BeerViewModelError.swift */; };
 		D2BEF0D628AA3E6C0003BA5F /* ErrorModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D528AA3E6C0003BA5F /* ErrorModal.swift */; };
+		D2CC6B1C28B6697C00232F92 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CC6B1B28B6697C00232F92 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModalViewModifier.swift; sourceTree = "<group>"; };
 		D2BEF0D328AA3A900003BA5F /* BeerViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModelError.swift; sourceTree = "<group>"; };
 		D2BEF0D528AA3E6C0003BA5F /* ErrorModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModal.swift; sourceTree = "<group>"; };
+		D2CC6B1B28B6697C00232F92 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				D2445B9628B27A27001FB9DE /* CustomTabBar.swift */,
+				D2CC6B1B28B6697C00232F92 /* MainTabView.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */,
 				D2BEF0A8289ED3900003BA5F /* BeerDataSource.swift in Sources */,
 				D2BEF0D428AA3A900003BA5F /* BeerViewModelError.swift in Sources */,
+				D2CC6B1C28B6697C00232F92 /* MainTabView.swift in Sources */,
 				D2BEF0D628AA3E6C0003BA5F /* ErrorModal.swift in Sources */,
 				D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */,
 				D2445B9428B13DBA001FB9DE /* CommentView.swift in Sources */,

@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct Beer_RecommendationApp: App {
     let sheetManager : SheetManager = SheetManager()
+    @StateObject var viewRouter = ViewRouter()
+    
     
     var body: some Scene {
         WindowGroup {
-            BeerListView(viewModel: AppDIContainer.getBeerDependencies())
+            MainTabView(viewRouter: viewRouter)
                 .environmentObject(sheetManager)
         }
     }

@@ -13,33 +13,31 @@ struct BeerListView: View {
     @StateObject var viewModel : BeerViewModel
     
     var body: some View {
-        NavigationView {
-            ScrollView(showsIndicators: false) {
-                Text(viewModel.randomBeer.first?.name ?? "")
-                Divider()
-                ForEach(viewModel.beers) { beer in
-                    if let url = URL(string: beer.imageUrl ?? "") {
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width : 100, height : 200)
-                        } placeholder: {
-                            ProgressView()
-                        }
+        ScrollView(showsIndicators: false) {
+            Text(viewModel.randomBeer.first?.name ?? "")
+            Divider()
+            ForEach(viewModel.beers) { beer in
+                if let url = URL(string: beer.imageUrl ?? "") {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width : 100, height : 200)
+                    } placeholder: {
+                        ProgressView()
                     }
-                    
-                    Text(beer.name ?? "없음")
-                        .font(.system(size: 20, weight: .bold))
                 }
+                
+                Text(beer.name ?? "없음")
+                    .font(.system(size: 20, weight: .bold))
             }
-            .task() {
-                try? await viewModel.getAllBeers()
-                try? await viewModel.getRandomBeer()
-            }
+        }
+        .task() {
+            try? await viewModel.getAllBeers()
+            try? await viewModel.getRandomBeer()
         }
         .showSheet(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
-        .showLoadingView(isLoading: viewModel.isLoading)   
+        .showLoadingView(isLoading: viewModel.isLoading)
     }
 }
