@@ -11,7 +11,7 @@ struct BeerListView: View {
     @EnvironmentObject var sheetManager : SheetManager
     
     @StateObject var viewModel : BeerViewModel
-    
+
     let itemLayout : [GridItem] = [
         GridItem(.flexible(minimum: 150)),
         GridItem(.flexible(minimum: 150))
@@ -20,7 +20,15 @@ struct BeerListView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                beerListView()
+                VStack(alignment : .center, spacing : 0) {
+                    searchView()
+                    
+                    recommendView()
+                    
+                    categoryView()
+                    
+                    beerListView()
+                }
             }
             .padding()
         }
@@ -32,17 +40,34 @@ struct BeerListView: View {
         .showSheet(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)
+        
+    }
+    
+    private func searchView() -> some View {
+        Text("search bar will show here")
+    }
+    
+    @ViewBuilder
+    private func recommendView() -> some View {
+        if let randomBeer = viewModel.randomBeer.first {
+            BeerListItemView(item: randomBeer)
+        }
+    }
+    
+    private func categoryView() -> some View {
+        Text("category view will show here")
     }
     
     private func beerListView() -> some View {
         LazyVGrid(columns: itemLayout, alignment: .leading, spacing: 8) {
             ForEach(viewModel.beers.indices, id : \.self) { index in
                 BeerListItemView(item: viewModel.beers[index])
-                    .padding(.top, index % 2 == 0 ? 0 : 60)
+                    .padding(.top, index % 2 == 0 ? 0 : 70)
                     .onTapGesture {
                         // go to detail view
                     }
             }
         }
+        .padding(.bottom, 70)
     }
 }

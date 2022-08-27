@@ -34,8 +34,7 @@ struct MainTabView: View {
                 
             }
         }
-        .onReceive(viewRouter.$currentPage) { currentPage in
-            print(currentPage)
+        .onReceive(viewRouter.$currentTab) { currentPage in
             switch currentPage {
             case .house:
                 selectedItem = 0
@@ -45,16 +44,16 @@ struct MainTabView: View {
         }
     }
     
-    @ViewBuilder
     private func tabBarItem<Content: View>(tag : Int, content: () -> Content) -> some View {
         content()
+            .navigationBarTitleDisplayMode(.inline)
             .tag(tag)
     }
     
     private func tabBarView() -> some View {
         VStack {
             Spacer()
-            CustomTabBar(selectedTab: $viewRouter.currentPage)
+            CustomTabBar(selectedTab: $viewRouter.currentTab)
         }
     }
 }

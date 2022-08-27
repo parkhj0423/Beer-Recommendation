@@ -15,10 +15,10 @@ public enum Tab : String, CaseIterable {
 
 class ViewRouter: ObservableObject {
     
-    @Published public var currentPage: Tab = .house
+    @Published public var currentTab: Tab = .house
     
     public func changeCurrentPage(_ to : Tab) {
-        self.currentPage = to
+        self.currentTab = to
     }
 }
 

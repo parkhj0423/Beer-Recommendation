@@ -21,11 +21,12 @@ struct BeerListItemView: View {
                         image
                             .resizable()
                             .scaledToFit()
-                            .frame(width: width, height : 150, alignment : .center)
+                            .frame(width: width, height : 175, alignment: .center)
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(20)
                     } placeholder: {
                         ProgressView()
+                            .frame(width: width, height : 175, alignment: .center)
                     }
                 }
                 

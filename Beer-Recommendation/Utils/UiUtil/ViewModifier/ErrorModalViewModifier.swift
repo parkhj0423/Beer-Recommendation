@@ -66,7 +66,7 @@ struct ErrorModalViewModifier<T : GenericError>: ViewModifier {
     
     private func dismissButton() -> some View {
         Rectangle()
-            .fill(Color.cyan)
+            .fill(Color.gray)
             .cornerRadius(15, corners: .bottomLeft)
             .cornerRadius(15, corners: .bottomRight)
             .frame(maxWidth : .infinity, maxHeight: 50, alignment: .bottom)
