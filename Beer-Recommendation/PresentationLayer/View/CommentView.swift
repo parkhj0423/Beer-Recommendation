@@ -12,18 +12,19 @@ struct CommentView: View {
     @EnvironmentObject var sheetManager : SheetManager
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Spacer()
-                Text("Comment View!")
+        NavigationView {
+            ScrollView {
+                VStack {
+                    Spacer()
+                    Text("Comment View!")
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    dismissButton()
+                }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                dismissButton()
-            }
-        }
-        
     }
     
     private func dismissButton() -> some View {

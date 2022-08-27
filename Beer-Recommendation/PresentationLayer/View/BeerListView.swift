@@ -12,32 +12,37 @@ struct BeerListView: View {
     
     @StateObject var viewModel : BeerViewModel
     
+    let itemLayout : [GridItem] = [
+        GridItem(.flexible(minimum: 150)),
+        GridItem(.flexible(minimum: 150))
+    ]
+    
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            Text(viewModel.randomBeer.first?.name ?? "")
-            Divider()
-            ForEach(viewModel.beers) { beer in
-                if let url = URL(string: beer.imageUrl ?? "") {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width : 100, height : 200)
-                    } placeholder: {
-                        ProgressView()
-                    }
-                }
-                
-                Text(beer.name ?? "없음")
-                    .font(.system(size: 20, weight: .bold))
+        NavigationView {
+            ScrollView(showsIndicators: false) {
+                beerListView()
             }
+            .padding()
         }
-        .task() {
+        .task {
             try? await viewModel.getAllBeers()
             try? await viewModel.getRandomBeer()
         }
+        .navigationBarColor(backgroundColor: UIColor.clear, shadowColor: UIColor.clear)
         .showSheet(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)
+    }
+    
+    private func beerListView() -> some View {
+        LazyVGrid(columns: itemLayout, alignment: .leading, spacing: 8) {
+            ForEach(viewModel.beers.indices, id : \.self) { index in
+                BeerListItemView(item: viewModel.beers[index])
+                    .padding(.top, index % 2 == 0 ? 0 : 60)
+                    .onTapGesture {
+                        // go to detail view
+                    }
+            }
+        }
     }
 }

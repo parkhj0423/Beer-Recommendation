@@ -16,6 +16,7 @@ struct Beer_RecommendationApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView(viewRouter: viewRouter)
+                .background(Color(UIColor.systemBackground))
                 .environmentObject(sheetManager)
         }
     }

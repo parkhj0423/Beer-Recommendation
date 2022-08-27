@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 extension View {
+    func navigationBarColor(backgroundColor: UIColor?, shadowColor: UIColor?) -> some View {
+        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor, shadowColor: shadowColor))
+    }
+    
     func showLoadingView(isLoading: Bool) -> some View {
         modifier(LoadingViewModifier(isLoading: isLoading))
     }

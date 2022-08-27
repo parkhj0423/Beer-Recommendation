@@ -40,7 +40,10 @@ final class BeerViewModel : ObservableObject {
         } catch NetworkError.internetConnectionError {
             self.isLoading = false
             self.viewModelError = .internetConnectionError
-        } catch  {
+        } catch {
+            print("@@@@@@@@@@@@@@@@@@")
+            print(error)
+            print("@@@@@@@@@@@@@@@@@@")
             self.viewModelError = .failToLoadData
             self.isLoading = false
         }

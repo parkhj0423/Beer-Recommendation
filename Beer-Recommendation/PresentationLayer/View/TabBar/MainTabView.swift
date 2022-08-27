@@ -47,16 +47,8 @@ struct MainTabView: View {
     
     @ViewBuilder
     private func tabBarItem<Content: View>(tag : Int, content: () -> Content) -> some View {
-        NavigationView {
-            content()
-                .toolbar {
-                   
-                }
-                .navigationTitle("")
-                .navigationBarTitleDisplayMode(.inline)
-        }
-        .accentColor(.black)
-        .tag(tag)
+        content()
+            .tag(tag)
     }
     
     private func tabBarView() -> some View {
