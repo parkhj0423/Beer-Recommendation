@@ -16,24 +16,29 @@ struct BeerListItemView: View {
             let width = geometry.size.width
             
             VStack(alignment : .leading, spacing : 10) {
-                if let url = URL(string: item.imageUrl ?? "") {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: width, height : 175, alignment: .center)
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(20)
-                    } placeholder: {
-                        ProgressView()
-                            .frame(width: width, height : 175, alignment: .center)
-                    }
-                }
+                thumbnailImageView(width: width)
                 
                 descriptionView()
             }
         }
         .frame(height: 250)
+    }
+    
+    @ViewBuilder
+    private func thumbnailImageView(width : CGFloat) -> some View {
+        if let url = URL(string: item.imageUrl ?? "") {
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: width, height : 175, alignment: .center)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(20)
+            } placeholder: {
+                ProgressView()
+                    .frame(width: width, height : 175, alignment: .center)
+            }
+        }
     }
     
     private func descriptionView() -> some View {

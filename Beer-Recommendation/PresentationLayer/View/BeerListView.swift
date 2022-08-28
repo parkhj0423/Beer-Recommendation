@@ -20,17 +20,19 @@ struct BeerListView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
+//                searchView()
+                
+                recommendView()
                 VStack(alignment : .center, spacing : 0) {
-                    searchView()
-                    
-                    recommendView()
+                   
                     
                     categoryView()
                     
                     beerListView()
                 }
+                .padding()
             }
-            .padding()
+            
         }
         .task {
             try? await viewModel.getAllBeers()
@@ -47,10 +49,16 @@ struct BeerListView: View {
         Text("search bar will show here")
     }
     
-    @ViewBuilder
     private func recommendView() -> some View {
-        if let randomBeer = viewModel.randomBeer.first {
-            BeerListItemView(item: randomBeer)
+        VStack(alignment : .leading) {
+            Text("Today's Beer!!")
+                .bold()
+                .font(.title)
+            
+            if let randomBeer = viewModel.randomBeer.first {
+                BeerListItemView(item: randomBeer)
+                    .background(Color.gray)
+            }
         }
     }
     

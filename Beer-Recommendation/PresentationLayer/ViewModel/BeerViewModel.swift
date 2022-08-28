@@ -38,6 +38,9 @@ final class BeerViewModel : ObservableObject {
             self.beers = beers
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
+            print("###############")
+            print("internet connection error")
+            print("###############")
             self.isLoading = false
             self.viewModelError = .internetConnectionError
         } catch {
