@@ -20,11 +20,11 @@ struct BeerListView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-//                searchView()
+                searchView()
                 
                 recommendView()
+                
                 VStack(alignment : .center, spacing : 0) {
-                   
                     
                     categoryView()
                     
@@ -56,8 +56,7 @@ struct BeerListView: View {
                 .font(.title)
             
             if let randomBeer = viewModel.randomBeer.first {
-                BeerListItemView(item: randomBeer)
-                    .background(Color.gray)
+                BeerRecommendView(item: randomBeer)
             }
         }
     }
