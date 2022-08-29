@@ -17,6 +17,7 @@
 		D2AB36A228BA14BB00F41EC8 /* BeerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36A128BA14BB00F41EC8 /* BeerListItemView.swift */; };
 		D2AB36A428BA2F0500F41EC8 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36A328BA2F0500F41EC8 /* NavigationBarModifier.swift */; };
 		D2AB36A628BBAD8C00F41EC8 /* BeerRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36A528BBAD8C00F41EC8 /* BeerRecommendView.swift */; };
+		D2AB36A828BD09C600F41EC8 /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36A728BD09C600F41EC8 /* AsyncImageLoader.swift */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		D2AB36A128BA14BB00F41EC8 /* BeerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListItemView.swift; sourceTree = "<group>"; };
 		D2AB36A328BA2F0500F41EC8 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		D2AB36A528BBAD8C00F41EC8 /* BeerRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRecommendView.swift; sourceTree = "<group>"; };
+		D2AB36A728BD09C600F41EC8 /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 		D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beer-Recommendation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationApp.swift; sourceTree = "<group>"; };
 		D2B36D4D2890DEB9009C5127 /* BeerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListView.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		D21CF575289ABA0400A0291B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				D2AB36A728BD09C600F41EC8 /* AsyncImageLoader.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */,
 				D2BEF0A8289ED3900003BA5F /* BeerDataSource.swift in Sources */,
 				D2BEF0D428AA3A900003BA5F /* BeerViewModelError.swift in Sources */,
+				D2AB36A828BD09C600F41EC8 /* AsyncImageLoader.swift in Sources */,
 				D2AB36A428BA2F0500F41EC8 /* NavigationBarModifier.swift in Sources */,
 				D2CC6B1C28B6697C00232F92 /* MainTabView.swift in Sources */,
 				D2BEF0D628AA3E6C0003BA5F /* ErrorModal.swift in Sources */,
