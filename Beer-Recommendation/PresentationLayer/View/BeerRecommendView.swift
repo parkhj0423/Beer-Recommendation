@@ -18,7 +18,7 @@ struct BeerRecommendView: View {
             ZStack {
                 AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: 300, isBlur: 4)
 
-                descriptionView()
+                recommendView()
             }
                 
         }
@@ -26,24 +26,38 @@ struct BeerRecommendView: View {
     }
 
     
-    private func descriptionView() -> some View {
-        HStack(spacing : 10) {
+    private func recommendView() -> some View {
+        HStack(spacing : 30) {
             AsyncImageLoader(imageUrl: item.imageUrl, width: 100, height: 200)
             
-            VStack(alignment : .leading , spacing: 10) {
+            descriptionView()
+        }
+        .padding([.leading,.trailing], 30)
+    }
+    
+    private func descriptionView() -> some View {
+        VStack(alignment : .leading, spacing : 20) {
+            VStack(alignment : .leading, spacing : 0) {
                 Text(item.name ?? "")
                     .font(.title)
                     .bold()
                 Text(item.tagline ?? "")
                     .font(.body)
+            }
+            
+            Divider()
+            
+            VStack(alignment : .leading , spacing: 5) {
+                
                 Text("ph : \(String(format: "%.1f", item.ph ?? 0))")
                 Text("abv : \(String(format: "%.1f", item.abv ?? 0))%")
+                Text("srm : \(String(format: "%.1f", item.srm ?? 0))")
                 Text("Attenuation Level : \(String(format: "%.1f", item.attenuationLevel ?? 0))")
                 Text(item.firstBrewed ?? "")
             }
             .font(.caption)
             .font(.system(size: 15, weight: .bold))
         }
-        .frame(alignment : .leading)
+        
     }
 }

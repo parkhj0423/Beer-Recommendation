@@ -13,6 +13,7 @@ struct AsyncImageLoader: View {
     var width : CGFloat
     var height : CGFloat
     var isBlur : CGFloat? = 0
+    var opacity : Bool? = false
     
     var body: some View {
         if let url = URL(string: imageUrl ?? "") {
@@ -22,13 +23,16 @@ struct AsyncImageLoader: View {
                     .scaledToFit()
                     .frame(width: width, height : height, alignment: .center)
                     .blur(radius: isBlur != nil ? isBlur! : 0)
+                    .background(Color.gray.opacity(opacity ?? false ? 0.1 : 0))
                     .cornerRadius(20)
             } placeholder: {
                 ProgressView()
                     .frame(width: width, height : height, alignment: .center)
             }
         } else {
-            Text("No Image")
+            Image(systemName: "questionmark.circle.fill")
+                .frame(minWidth: 100, alignment: .center)
+                .blur(radius: isBlur != nil ? isBlur! : 0)
         }
     }
 }

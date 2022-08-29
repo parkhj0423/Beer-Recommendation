@@ -51,7 +51,7 @@ struct BeerListView: View {
     
     private func recommendView() -> some View {
         VStack(alignment : .leading) {
-            Text("Today's Beer!!")
+            Text("Today's Beer!!!")
                 .bold()
                 .font(.title)
             

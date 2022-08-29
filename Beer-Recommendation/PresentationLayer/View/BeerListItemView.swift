@@ -16,45 +16,22 @@ struct BeerListItemView: View {
             let width = geometry.size.width
             
             VStack(alignment : .leading, spacing : 10) {
-                thumbnailImageView(width: width)
+                AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: 175, opacity: true)
                 
                 descriptionView()
             }
         }
         .frame(height: 250)
     }
-    
-    @ViewBuilder
-    private func thumbnailImageView(width : CGFloat) -> some View {
-        if let url = URL(string: item.imageUrl ?? "") {
-            AsyncImage(url: url) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: width, height : 175, alignment: .center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
-            } placeholder: {
-                ProgressView()
-                    .frame(width: width, height : 175, alignment: .center)
-            }
-        }
-    }
-    
+
     private func descriptionView() -> some View {
         VStack(alignment : .leading, spacing : 5) {
-            if let name = item.name {
-                Text(name)
-            }
-            
-            if let tagline = item.tagline {
-                Text(tagline)
-            }
-            
-            if let firstBrewed = item.firstBrewed {
-                Text(firstBrewed)
-            }
+            Text(item.name ?? "")
+                .font(.system(size: 16, weight: .bold))
+            Text(item.tagline ?? "")
+                .font(.system(size: 14, weight: .medium))
+            Text(item.firstBrewed ?? "")
+                .font(.system(size: 12, weight: .regular))
         }
-        .font(.system(size: 14, weight: .bold))
     }
 }
