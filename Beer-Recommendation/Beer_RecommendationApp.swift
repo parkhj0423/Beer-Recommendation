@@ -16,6 +16,7 @@ struct Beer_RecommendationApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView(viewRouter: viewRouter)
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
                 .background(Color(UIColor.systemBackground))
                 .environmentObject(sheetManager)
         }

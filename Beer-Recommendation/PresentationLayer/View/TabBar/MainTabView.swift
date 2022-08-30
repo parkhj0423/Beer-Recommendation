@@ -34,6 +34,7 @@ struct MainTabView: View {
                 
             }
         }
+        .ignoresSafeArea(.keyboard)
         .onReceive(viewRouter.$currentTab) { currentPage in
             switch currentPage {
             case .house:

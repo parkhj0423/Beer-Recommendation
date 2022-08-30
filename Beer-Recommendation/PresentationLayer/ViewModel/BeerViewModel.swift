@@ -17,12 +17,16 @@ final class BeerViewModel : ObservableObject {
     
     @Published public var beers : [BeerEntity] = []
     @Published public var randomBeer : [BeerEntity] = []
+    @Published public var searchKeyword : String = ""
     
     @Published public var isLoading : Bool = false
     @Published public var viewModelError : BeerViewModelError?
     
     init(useCase : BeerUseCaseInterface) {
         self.useCase = useCase
+        
+        inputKeyword()
+        
     }
     
     public func cleanError() {
@@ -33,20 +37,13 @@ final class BeerViewModel : ObservableObject {
         cleanError()
         do {
             self.isLoading = true
-            
             let beers = try await useCase.getAllBeers()
             self.beers = beers
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
-            print("###############")
-            print("internet connection error")
-            print("###############")
             self.isLoading = false
             self.viewModelError = .internetConnectionError
         } catch {
-            print("@@@@@@@@@@@@@@@@@@")
-            print(error)
-            print("@@@@@@@@@@@@@@@@@@")
             self.viewModelError = .failToLoadData
             self.isLoading = false
         }
@@ -68,5 +65,16 @@ final class BeerViewModel : ObservableObject {
             self.viewModelError = .failToLoadData
             self.isLoading = false
         }
+    }
+    
+    private func inputKeyword() {
+        $searchKeyword
+            .debounce(for: .seconds(1.5), scheduler: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] keyword in
+                if keyword != "" {
+                    print(keyword)
+                }
+            })
+            .store(in: &bag)
     }
 }

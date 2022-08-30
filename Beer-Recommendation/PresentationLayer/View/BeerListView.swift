@@ -46,7 +46,7 @@ struct BeerListView: View {
     }
     
     private func searchView() -> some View {
-        Text("search bar will show here")
+        CustomTextField(text: $viewModel.searchKeyword)
     }
     
     private func recommendView() -> some View {
