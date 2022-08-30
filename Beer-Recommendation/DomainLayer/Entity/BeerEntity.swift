@@ -27,9 +27,9 @@ struct BeerEntity : Codable, Identifiable {
     let ph : Double?
     // 발효도
     let attenuationLevel: Double?
-    let volume, boilVolume: BoilVolumeEntity
+    let volume, boilVolume: BoilVolumeEntity?
     let method: MethodEntity?
-    let ingredients: IngredientsEntity
+    let ingredients: IngredientsEntity?
     let foodPairing: [String]
     let brewersTips: String?
     let contributedBy: String?
@@ -37,14 +37,14 @@ struct BeerEntity : Codable, Identifiable {
 
 // MARK: - BoilVolume
 struct BoilVolumeEntity : Codable  {
-    let value: Double
-    let unit: String
+    let value: Double?
+    let unit: String?
 }
 
 // MARK: - Ingredients
 struct IngredientsEntity : Codable  {
-    let malt: [MaltEntity]
-    let hops: [HopEntity]
+    let malt: [MaltEntity]?
+    let hops: [HopEntity]?
     // 효모
     let yeast: String?
 }
@@ -52,31 +52,31 @@ struct IngredientsEntity : Codable  {
 // MARK: - Hop
 struct HopEntity : Codable  {
     let name: String?
-    let amount: BoilVolumeEntity
+    let amount: BoilVolumeEntity?
     let add: String?
     let attribute: String?
 }
 
 // MARK: - Malt
 struct MaltEntity : Codable  {
-    let name: String
-    let amount: BoilVolumeEntity
+    let name: String?
+    let amount: BoilVolumeEntity?
 }
 
 // MARK: - Method
 struct MethodEntity : Codable  {
-    let mashTemp: [MashTempEntity]
-    let fermentation: FermentationEntity
+    let mashTemp: [MashTempEntity]?
+    let fermentation: FermentationEntity?
     let twist: String?
 }
 
 // MARK: - Fermentation
 struct FermentationEntity : Codable  {
-    let temp: BoilVolumeEntity
+    let temp: BoilVolumeEntity?
 }
 
 // MARK: - MashTemp
 struct MashTempEntity : Codable {
-    let temp: BoilVolumeEntity
+    let temp: BoilVolumeEntity?
     let duration: Int?
 }

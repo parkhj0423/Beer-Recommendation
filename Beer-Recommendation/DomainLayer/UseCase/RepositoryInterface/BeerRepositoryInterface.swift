@@ -10,4 +10,5 @@ import Foundation
 protocol BeerRepositoryInterface {
     func getAllBeers() async throws -> [BeerEntity]
     func getRandomBeer() async throws -> [BeerEntity]
+    func getBeerWithKeyword(keyword : String) async throws -> [BeerEntity]
 }

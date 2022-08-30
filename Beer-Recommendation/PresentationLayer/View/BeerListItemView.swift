@@ -21,6 +21,9 @@ struct BeerListItemView: View {
                 descriptionView()
             }
         }
+        .transaction { transaction in
+            transaction.animation = nil
+        }
         .frame(height: 250)
     }
 

@@ -11,7 +11,7 @@ struct BeerListView: View {
     @EnvironmentObject var sheetManager : SheetManager
     
     @StateObject var viewModel : BeerViewModel
-
+    
     let itemLayout : [GridItem] = [
         GridItem(.flexible(minimum: 150)),
         GridItem(.flexible(minimum: 150))
@@ -22,12 +22,11 @@ struct BeerListView: View {
             ScrollView(showsIndicators: false) {
                 searchView()
                 
-                recommendView()
+                if !viewModel.isSearched() {
+                    recommendView()
+                }
                 
-                VStack(alignment : .center, spacing : 0) {
-                    
-                    categoryView()
-                    
+                VStack(alignment : .leading, spacing : 0) {
                     beerListView()
                 }
                 .padding()
@@ -56,25 +55,56 @@ struct BeerListView: View {
                 .font(.title)
             
             if let randomBeer = viewModel.randomBeer.first {
-                BeerRecommendView(item: randomBeer)
+                ZStack(alignment: .bottomTrailing) {
+                    BeerRecommendView(item: randomBeer)
+                    
+                    moveToDetailButton()
+                }
             }
         }
+        .padding([.leading, .trailing], 10)
     }
     
     private func categoryView() -> some View {
         Text("category view will show here")
     }
     
+    
+    @ViewBuilder
     private func beerListView() -> some View {
+        if !viewModel.isSearched() {
+            categoryView()
+        } else {
+            Text("\(viewModel.searchedBeers.count) items have been searched")
+                .bold()
+                .font(.title3)
+        }
+        
         LazyVGrid(columns: itemLayout, alignment: .leading, spacing: 8) {
-            ForEach(viewModel.beers.indices, id : \.self) { index in
-                BeerListItemView(item: viewModel.beers[index])
+            ForEach(viewModel.isSearched() ? viewModel.searchedBeers.indices : viewModel.beers.indices, id : \.self) { index in
+                BeerListItemView(item: viewModel.isSearched() ? viewModel.searchedBeers[index] : viewModel.beers[index])
                     .padding(.top, index % 2 == 0 ? 0 : 70)
                     .onTapGesture {
                         // go to detail view
                     }
+                
             }
         }
         .padding(.bottom, 70)
+    }
+    
+    private func moveToDetailButton() -> some View {
+        Button {
+            
+        } label: {
+            RoundedRectangle(cornerRadius: 35)
+                .fill(Color.white)
+                .frame(width: 60, height: 35)
+                .overlay {
+                    Image(systemName: "arrow.forward")
+                        .foregroundColor(Color.black)
+                }
+        }
+        .padding(.trailing, 20)
     }
 }

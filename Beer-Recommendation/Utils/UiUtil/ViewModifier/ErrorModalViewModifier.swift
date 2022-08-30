@@ -60,6 +60,7 @@ struct ErrorModalViewModifier<T : GenericError>: ViewModifier {
                 .font(.system(size: 17, weight: .medium))
                 .font(.system(.caption))
         }
+        .foregroundColor(.black)
         
         Spacer()
     }

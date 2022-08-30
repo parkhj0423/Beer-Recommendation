@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 // MainActor로 선언하여 모든 행위를 메인 쓰레드에서 동작하게 함
 @MainActor
@@ -16,6 +17,7 @@ final class BeerViewModel : ObservableObject {
     private var bag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     @Published public var beers : [BeerEntity] = []
+    @Published public var searchedBeers : [BeerEntity] = []
     @Published public var randomBeer : [BeerEntity] = []
     @Published public var searchKeyword : String = ""
     
@@ -51,10 +53,11 @@ final class BeerViewModel : ObservableObject {
     
     
     public func getRandomBeer() async throws {
+        cleanError()
         do {
             self.isLoading = true
             let randomBeer = try await useCase.getRandomBeer()
-            print(randomBeer)
+            //            print(randomBeer)
             self.randomBeer = randomBeer
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
@@ -71,10 +74,34 @@ final class BeerViewModel : ObservableObject {
         $searchKeyword
             .debounce(for: .seconds(1.5), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] keyword in
-                if keyword != "" {
-                    print(keyword)
+                Task {
+                    UIApplication.shared.endEditing()
+                    if keyword != "" {
+                        try await self?.getBeerWithKeyword(keyword: keyword)
+                    } else {
+                        self?.searchedBeers = []
+                    }
                 }
             })
             .store(in: &bag)
+    }
+    
+    private func getBeerWithKeyword(keyword : String) async throws {
+        cleanError()
+        do {
+            self.isLoading = true
+            let searchedBeers = try await useCase.getBeerWithKeyword(keyword: keyword)
+            self.searchedBeers = searchedBeers
+            self.isLoading = false
+            
+        } catch {
+            self.viewModelError = .failToLoadData
+            self.isLoading = false
+        }
+    }
+    
+    
+    public func isSearched() -> Bool {
+        return !searchedBeers.isEmpty
     }
 }

@@ -31,5 +31,13 @@ final class BeerRepository : BeerRepositoryInterface {
                 return beerEntity
             })
     }
+    
+    func getBeerWithKeyword(keyword : String) async throws -> [BeerEntity] {
+        return try await dataSource.getBeerWithKeyword(keyword: keyword)
+            .map({ beerDTO in
+                let beerEntity = beerDTO.toEntity()
+                return beerEntity
+            })
+    }
 
 }

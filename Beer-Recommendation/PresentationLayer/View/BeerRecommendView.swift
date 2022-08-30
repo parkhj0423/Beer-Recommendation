@@ -16,7 +16,7 @@ struct BeerRecommendView: View {
             let width : CGFloat = geometry.size.width
             
             ZStack {
-                AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: 300, isBlur: 4)
+                AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: 350, isBlur: 4)
 
                 recommendView()
             }
