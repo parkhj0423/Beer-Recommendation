@@ -30,5 +30,6 @@ struct LoadingViewModifier: ViewModifier {
                 
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
