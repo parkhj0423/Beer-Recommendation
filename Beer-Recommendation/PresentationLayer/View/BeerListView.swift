@@ -18,7 +18,7 @@ struct BeerListView: View {
     ]
     
     var body: some View {
-        NavigationView {
+        VStack(spacing : 20) {
             ScrollView(showsIndicators: false) {
                 searchView()
                 
@@ -31,17 +31,14 @@ struct BeerListView: View {
                 }
                 .padding()
             }
-            
         }
+        .showSheet(sheetManager: sheetManager)
+        .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
+        .showLoadingView(isLoading: viewModel.isLoading)
         .task {
             try? await viewModel.getAllBeers()
             try? await viewModel.getRandomBeer()
         }
-        .navigationBarColor(backgroundColor: UIColor.clear, shadowColor: UIColor.clear)
-        .showSheet(sheetManager: sheetManager)
-        .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
-        .showLoadingView(isLoading: viewModel.isLoading)
-        
     }
     
     private func searchView() -> some View {
@@ -82,12 +79,14 @@ struct BeerListView: View {
         
         LazyVGrid(columns: itemLayout, alignment: .leading, spacing: 8) {
             ForEach(viewModel.isSearched() ? viewModel.searchedBeers.indices : viewModel.beers.indices, id : \.self) { index in
-                BeerListItemView(item: viewModel.isSearched() ? viewModel.searchedBeers[index] : viewModel.beers[index])
-                    .padding(.top, index % 2 == 0 ? 0 : 70)
-                    .onTapGesture {
-                        // go to detail view
-                    }
+                let item = viewModel.isSearched() ? viewModel.searchedBeers[index] : viewModel.beers[index]
                 
+                NavigationLink {
+                    BeerDetailView(viewModel: viewModel, item: item)
+                } label: {
+                    BeerListItemView(item: item)
+                        .padding(.top, index % 2 == 0 ? 0 : 70)
+                }
             }
         }
         .padding(.bottom, 70)

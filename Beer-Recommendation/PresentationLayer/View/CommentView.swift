@@ -10,7 +10,7 @@ import SwiftUI
 struct CommentView: View {
     
     @EnvironmentObject var sheetManager : SheetManager
-    @State private var text : String = ""
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -19,12 +19,11 @@ struct CommentView: View {
                     Text("Comment View!")
                 }
             }
-            .searchable(text: $text, placement: .sidebar)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    dismissButton()
-//                }
-//            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    dismissButton()
+                }
+            }
         }
     }
     

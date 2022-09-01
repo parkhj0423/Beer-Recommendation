@@ -76,6 +76,8 @@ final class BeerViewModel : ObservableObject {
             .sink(receiveValue: { [weak self] keyword in
                 Task {
                     UIApplication.shared.endEditing()
+                    //MARK: searchKeyword가 있을때 보여주고 없을때 메인뷰 보여주면 될듯
+                    //MARK: 검색결과가 없을때 별도의 무언가가 필요함 현재 검색결과가 없으면 그냥 추천화면 뜸
                     if keyword != "" {
                         try await self?.getBeerWithKeyword(keyword: keyword)
                     } else {

@@ -36,7 +36,7 @@ struct BeerRecommendView: View {
     }
     
     private func descriptionView() -> some View {
-        VStack(alignment : .leading, spacing : 20) {
+        VStack(alignment : .leading, spacing : 10) {
             VStack(alignment : .leading, spacing : 0) {
                 Text(item.name ?? "")
                     .font(.title)
@@ -53,6 +53,8 @@ struct BeerRecommendView: View {
                 Text("abv : \(String(format: "%.1f", item.abv ?? 0))%")
                 Text("srm : \(String(format: "%.1f", item.srm ?? 0))")
                 Text("Attenuation Level : \(String(format: "%.1f", item.attenuationLevel ?? 0))")
+                Text("Hop : \(item.ingredients?.hops?.first?.name ?? "")")
+                Text("Malt : \(item.ingredients?.malt?.first?.name ?? "")")
                 Text(item.firstBrewed ?? "")
             }
             .font(.caption)

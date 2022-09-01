@@ -37,7 +37,7 @@ struct CustomSheetViewModifier : ViewModifier {
                         }
                     }
         }
-        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(.bottom)
     }
     
     private func bottomSheetView<Content : View>(content : Content, height : CGFloat) -> some View {

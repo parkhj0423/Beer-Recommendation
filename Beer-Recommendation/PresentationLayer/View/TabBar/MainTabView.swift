@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var sheetManager : SheetManager
     @ObservedObject var viewRouter : ViewRouter
     
     @State private var selectedItem = 0
@@ -30,11 +31,12 @@ struct MainTabView: View {
                     }
                 }
                 
-                tabBarView()
-                
+                if sheetManager.sheetType != .bottomSheet {
+                    tabBarView()
+                }                
             }
         }
-        .ignoresSafeArea(.keyboard)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .onReceive(viewRouter.$currentTab) { currentPage in
             switch currentPage {
             case .house:
@@ -46,9 +48,13 @@ struct MainTabView: View {
     }
     
     private func tabBarItem<Content: View>(tag : Int, content: () -> Content) -> some View {
-        content()
-            .navigationBarTitleDisplayMode(.inline)
-            .tag(tag)
+        NavigationView {
+            content()
+                .navigationBarTitleDisplayMode(.inline)
+                .tint(.white)
+                .navigationBarColor(backgroundColor: UIColor.clear, shadowColor: UIColor.clear)
+        }
+        .tag(tag)
     }
     
     private func tabBarView() -> some View {
