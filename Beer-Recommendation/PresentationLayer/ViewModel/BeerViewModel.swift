@@ -102,6 +102,20 @@ final class BeerViewModel : ObservableObject {
         }
     }
     
+    public func getStarCount(beer : BeerEntity) -> Int {
+        var star : Int = 0
+        for hop in beer.ingredients?.hops ?? [] {
+            if hop.attribute == "bitter" {
+                star += 1
+            }
+        }
+        
+        if star > 6 {
+            return 5
+        }
+        return star
+    }
+    
     
     public func isSearched() -> Bool {
         return !searchedBeers.isEmpty

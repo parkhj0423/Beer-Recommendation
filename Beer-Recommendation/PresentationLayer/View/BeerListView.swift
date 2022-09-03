@@ -11,6 +11,7 @@ struct BeerListView: View {
     @EnvironmentObject var sheetManager : SheetManager
     
     @StateObject var viewModel : BeerViewModel
+    var toggleTabView : () -> ()
     
     let itemLayout : [GridItem] = [
         GridItem(.flexible(minimum: 150)),
@@ -31,6 +32,12 @@ struct BeerListView: View {
                 }
                 .padding()
             }
+        }
+        .onAppear {
+            toggleTabView()
+        }
+        .onDisappear {
+            toggleTabView()
         }
         .showSheet(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
@@ -92,18 +99,21 @@ struct BeerListView: View {
         .padding(.bottom, 70)
     }
     
+    @ViewBuilder
     private func moveToDetailButton() -> some View {
-        Button {
-            
-        } label: {
-            RoundedRectangle(cornerRadius: 35)
-                .fill(Color.white)
-                .frame(width: 60, height: 35)
-                .overlay {
-                    Image(systemName: "arrow.forward")
-                        .foregroundColor(Color.black)
-                }
+        if let recommendBeer = viewModel.randomBeer.first {
+            NavigationLink {
+                BeerDetailView(viewModel: viewModel, item: recommendBeer)
+            } label: {
+                RoundedRectangle(cornerRadius: 35)
+                    .fill(Color.white)
+                    .frame(width: 60, height: 35)
+                    .overlay {
+                        Image(systemName: "arrow.forward")
+                            .foregroundColor(Color.black)
+                    }
+                    .padding(.trailing, 20)
+            }
         }
-        .padding(.trailing, 20)
     }
 }

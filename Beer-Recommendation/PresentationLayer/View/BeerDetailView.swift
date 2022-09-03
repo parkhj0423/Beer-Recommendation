@@ -38,12 +38,15 @@ struct BeerDetailView: View {
                 let height = geometry.size.height + minY
                 
                 VStack {
-                    AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: height < 200 ? 200 : height)
-                        .aspectRatio(contentMode: .fill)
-                        .offset(y : -minY)
-                        .padding(.top , 30)
+                    ZStack(alignment : .bottomLeading) {
+                        AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: height < 200 ? 200 : height)
+                            .aspectRatio(contentMode: .fill)
+                            .offset(y : -minY)
+                            .padding(.top , 30)
+                        
+                        titleView()
+                    }
                     
-
                     detailView()
                         .frame(minHeight : descriptionHeight)
                 }
@@ -55,17 +58,19 @@ struct BeerDetailView: View {
     
     
     private func detailView() -> some View {
-        
         VStack {
             Rectangle()
-                .fill(.white)
+                .fill(.regularMaterial)
                 .cornerRadius(30, corners: [.topLeft, .topRight])
                 .overlay {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(alignment: .leading, spacing: 20) {
-                            Text(item.name ?? "")
-                            Text(item.description ?? "")
-                            Text(item.description ?? "")
+                            
+                            descriptionView(title: "Description", content: item.description ?? "")
+                            
+                            descriptionView(title: "Brewers Tips", content: item.brewersTips ?? "")
+                            
+                            descriptionView(title: "Contributed By", content: item.contributedBy ?? "")
                             
                             ForEach(item.foodPairing, id : \.self) { food in
                                 Text(food)
@@ -76,12 +81,7 @@ struct BeerDetailView: View {
                     }
                     .padding()
                 }
-                .foregroundColor(.black)
-            
-            
         }
-        
-        
     }
     
     private func navigationBar() -> some View {
@@ -89,7 +89,7 @@ struct BeerDetailView: View {
             Button {
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                Image(systemName: "xmark")
+                Image(systemName: "arrow.backward")
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                     .background(.white)
                     .clipShape(Circle())
@@ -111,6 +111,49 @@ struct BeerDetailView: View {
         .zIndex(2)
         .padding(.horizontal)
     }
+    
+    private func titleView() -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            bitterRecognizeView()
+            
+            Text(item.name ?? "")
+                .font(.title)
+                .bold()
+               
+            VStack(alignment : .leading, spacing : 5) {
+                Text(item.tagline ?? "")
+                    .font(.headline)
+                
+                Text(item.firstBrewed ?? "")
+                    .font(.subheadline)
+                
+            }
+            
+        }
+        .padding([.leading, .bottom], 20)
+    }
+    
+    private func bitterRecognizeView() -> some View {
+        HStack(spacing : 10) {
+            ForEach(0..<viewModel.getStarCount(beer: item), id : \.self) { _ in
+                Image(systemName: "star.fill")
+                    .resizable()
+                    .foregroundColor(.yellow)
+                    .frame(width: 20, height: 20)
+            }
+        }
+    }
+    
+    private func descriptionView(title : String, content : String) -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text(title)
+                .font(.system(size: 17, weight: .bold))
+            
+            Text(content)
+                .font(.system(size: 13, weight: .regular))
+        }
+    }
+
     
 }
 

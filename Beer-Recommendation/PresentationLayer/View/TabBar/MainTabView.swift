@@ -13,6 +13,8 @@ struct MainTabView: View {
     
     @State private var selectedItem = 0
     
+    @State private var showTabView : Bool = true
+    
     init(viewRouter : ViewRouter) {
         self.viewRouter = viewRouter
         UITabBar.appearance().isHidden = true
@@ -23,7 +25,9 @@ struct MainTabView: View {
             ZStack {
                 TabView (selection: $selectedItem){
                     tabBarItem(tag: 0) {
-                        BeerListView(viewModel: AppDIContainer.getBeerDependencies())
+                        BeerListView(viewModel: AppDIContainer.getBeerDependencies()) {
+                            toggleTabViewState()
+                        }
                     }
                     
                     tabBarItem(tag: 1) {
@@ -31,7 +35,7 @@ struct MainTabView: View {
                     }
                 }
                 
-                if sheetManager.sheetType != .bottomSheet {
+                if !self.showTabView {
                     tabBarView()
                 }                
             }
@@ -62,6 +66,12 @@ struct MainTabView: View {
         VStack {
             Spacer()
             CustomTabBar(selectedTab: $viewRouter.currentTab)
+        }
+    }
+    
+    public func toggleTabViewState() {
+        withAnimation(.spring()) {
+            self.showTabView.toggle()
         }
     }
 }
