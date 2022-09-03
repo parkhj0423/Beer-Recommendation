@@ -51,10 +51,10 @@ struct MainTabView: View {
         NavigationView {
             content()
                 .navigationBarTitleDisplayMode(.inline)
-                .tint(.white)
                 .navigationTitle("")
                 .navigationBarColor(backgroundColor: UIColor.clear, shadowColor: UIColor.clear)
         }
+        .tint(.white)
         .tag(tag)
     }
     
