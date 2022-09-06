@@ -13,18 +13,17 @@ struct BeerDetailView: View {
     @ObservedObject var viewModel : BeerViewModel
     var item : BeerEntity
     
+    @State private var showNavigationTitle : Bool = false
+    
     var body: some View {
-        
         GeometryReader { geometry in
             let height = geometry.size.height
             ZStack(alignment : .top) {
                 navigationBar()
-                                
-                headerImageView(descriptionHeight : height)
                 
+                headerImageView(descriptionHeight : height)
             }
         }
-        
         .navigationBarHidden(true)
         .coordinateSpace(name: "SCROLL")
         .edgesIgnoringSafeArea(.bottom)
@@ -35,24 +34,31 @@ struct BeerDetailView: View {
             GeometryReader { geometry in
                 let minY = geometry.frame(in: .named("SCROLL")).minY
                 let width = geometry.size.width
-                let height = geometry.size.height + minY
                 
                 VStack {
                     ZStack(alignment : .bottomLeading) {
-                        AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: height < 200 ? 200 : height)
+                        AsyncImageLoader(imageUrl: item.imageUrl, width: width, height: minY > 0 ? minY + 250 : 250)
                             .aspectRatio(contentMode: .fill)
                             .offset(y : -minY)
                             .padding(.top , 30)
                         
-                        titleView()
+                        if !self.showNavigationTitle {
+                            titleView()
+                        }
                     }
-                    
-                    detailView()
-                        .frame(minHeight : descriptionHeight)
                 }
-                
+                .onChange(of: minY) {
+                    if $0 < -115 {
+                        self.showNavigationTitle = true
+                    } else {
+                        self.showNavigationTitle = false
+                    }
+                }
             }
             .frame(minHeight : 300)
+            
+            detailView()
+                .frame(minHeight : descriptionHeight - 50)
         }
     }
     
@@ -63,21 +69,49 @@ struct BeerDetailView: View {
                 .fill(.regularMaterial)
                 .cornerRadius(30, corners: [.topLeft, .topRight])
                 .overlay {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(alignment: .leading, spacing: 20) {
-                            
-                            descriptionView(title: "Description", content: item.description ?? "")
-                            
-                            descriptionView(title: "Brewers Tips", content: item.brewersTips ?? "")
-                            
-                            descriptionView(title: "Contributed By", content: item.contributedBy ?? "")
-                            
-                            ForEach(item.foodPairing, id : \.self) { food in
-                                Text(food)
+                    VStack(alignment: .center, spacing: 10) {
+                        holderView()
+                        
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack(alignment: .leading, spacing: 20) {
+                                
+                                //MARK: 네모난 영역에 3가지 대표 정보 ex. 씀 정도, 흑맥주인지 아닌지 등등
+                                
+                                descriptionView(title: "Description", content: item.description ?? "")
+                                
+                                descriptionView(title: "Brewers Tips", content: item.brewersTips ?? "")
+                                
+                                descriptionView(title: "Contributed By", content: item.contributedBy ?? "")
+                                
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                
+                                ForEach(item.foodPairing, id : \.self) { food in
+                                    Text(food)
+                                }
+                                
+                                
                             }
-                            
-                            
                         }
+                        .zIndex(3)
                     }
                     .padding()
                 }
@@ -96,7 +130,11 @@ struct BeerDetailView: View {
                     .foregroundColor(.black)
             }
             
-            Spacer()
+            if self.showNavigationTitle {
+                navigationTitleView()
+            } else {
+                Spacer()
+            }
             
             Button {
                 
@@ -108,8 +146,18 @@ struct BeerDetailView: View {
                     .foregroundColor(.red)
             }
         }
+        .frame(height : 50)
         .zIndex(2)
         .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    private func navigationTitleView() -> some View {
+        Spacer()
+        Text(item.name ?? "")
+            .font(.system(size: 20, weight: .bold))
+            .frame(maxWidth : 200)
+        Spacer()
     }
     
     private func titleView() -> some View {
@@ -119,7 +167,7 @@ struct BeerDetailView: View {
             Text(item.name ?? "")
                 .font(.title)
                 .bold()
-               
+            
             VStack(alignment : .leading, spacing : 5) {
                 Text(item.tagline ?? "")
                     .font(.headline)
@@ -128,9 +176,8 @@ struct BeerDetailView: View {
                     .font(.subheadline)
                 
             }
-            
         }
-        .padding([.leading, .bottom], 20)
+        .padding(.leading, 20)
     }
     
     private func bitterRecognizeView() -> some View {
@@ -153,7 +200,13 @@ struct BeerDetailView: View {
                 .font(.system(size: 13, weight: .regular))
         }
     }
-
+        
+    private func holderView() -> some View {
+        RoundedRectangle(cornerRadius: 50)
+            .fill(.gray)
+            .frame(width: 70, height: 7)
+    }
+    
     
 }
 
