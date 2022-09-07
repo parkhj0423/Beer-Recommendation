@@ -16,12 +16,6 @@ struct BeerDetailView: View {
     
     @State private var showNavigationTitle : Bool = false
     
-    init(viewModel : BeerViewModel, item : BeerEntity) {
-        self.item = item
-        self.viewModel = viewModel
-         
-        
-    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -84,6 +78,18 @@ struct BeerDetailView: View {
                             VStack(alignment: .leading, spacing: 20) {
                                 
                                 //MARK: 네모난 영역에 3가지 대표 정보 ex. 씀 정도, 흑맥주인지 아닌지 등등
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(.ultraThickMaterial)
+                                    .frame(height: 80)
+                                    .overlay {
+                                        if viewModel.getStarCount(beer: item) > 5 {
+                                            Text("very bitter")
+                                        } else if viewModel.getStarCount(beer: item) > 3 {
+                                            Text("little bit")
+                                        } else {
+                                            Text("not bitter")
+                                        }
+                                    }
                                 
                                 descriptionView(title: "Description", content: item.description ?? "")
                                 
