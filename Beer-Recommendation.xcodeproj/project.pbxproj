@@ -22,6 +22,7 @@
 		D2AB36AC28BDEBB900F41EC8 /* TextFieldClearViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36AB28BDEBB900F41EC8 /* TextFieldClearViewModifier.swift */; };
 		D2AB36AE28BDF4E900F41EC8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36AD28BDF4E900F41EC8 /* UIApplication.swift */; };
 		D2AB36B528C0E5C900F41EC8 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36B428C0E5C900F41EC8 /* BeerDetailView.swift */; };
+		D2AB36BA28C8DFF500F41EC8 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2AB36B928C8DFF500F41EC8 /* Introspect */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AB36BA28C8DFF500F41EC8 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +421,9 @@
 			dependencies = (
 			);
 			name = "Beer-Recommendation";
+			packageProductDependencies = (
+				D2AB36B928C8DFF500F41EC8 /* Introspect */,
+			);
 			productName = "Beer-Recommendation";
 			productReference = D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */;
 			productType = "com.apple.product-type.application";
@@ -491,6 +496,9 @@
 				Base,
 			);
 			mainGroup = D2B36D3F2890DEB9009C5127;
+			packageReferences = (
+				D2AB36B828C8DFF500F41EC8 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = D2B36D492890DEB9009C5127 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -895,6 +903,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D2AB36B828C8DFF500F41EC8 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D2AB36B928C8DFF500F41EC8 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2AB36B828C8DFF500F41EC8 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D2B36D402890DEB9009C5127 /* Project object */;
 }

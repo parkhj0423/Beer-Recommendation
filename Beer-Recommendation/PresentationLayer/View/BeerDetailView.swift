@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct BeerDetailView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -14,6 +15,13 @@ struct BeerDetailView: View {
     var item : BeerEntity
     
     @State private var showNavigationTitle : Bool = false
+    
+    init(viewModel : BeerViewModel, item : BeerEntity) {
+        self.item = item
+        self.viewModel = viewModel
+         
+        
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -87,26 +95,7 @@ struct BeerDetailView: View {
                                     Text(food)
                                 }
                                 
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
-                                
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
-                                
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
+
                                 
                                 
                             }
