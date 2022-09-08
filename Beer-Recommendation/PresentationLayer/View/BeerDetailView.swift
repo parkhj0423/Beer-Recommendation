@@ -11,9 +11,9 @@ import Introspect
 struct BeerDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
+    @StateObject var scrollViewUtil : ScrollViewUtil
     @ObservedObject var viewModel : BeerViewModel
     var item : BeerEntity
-    @StateObject var scrollViewUtil : ScrollViewUtil
     
     @State private var showNavigationTitle : Bool = false
     
@@ -66,7 +66,7 @@ struct BeerDetailView: View {
             .frame(minHeight : 300)
             
             detailView()
-                .frame(minHeight : descriptionHeight - 50)
+                .frame(minHeight : descriptionHeight - 100)
         }
         .introspectScrollView { scrollView in
             scrollViewUtil.isBottomBounceDisable = true
@@ -87,38 +87,26 @@ struct BeerDetailView: View {
                         ScrollView(.vertical, showsIndicators: false) {
                             VStack(alignment: .leading, spacing: 20) {
                                 
-                                //MARK: 네모난 영역에 3가지 대표 정보 ex. 씀 정도, 흑맥주인지 아닌지 등등
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(.ultraThickMaterial)
-                                    .frame(height: 80)
-                                    .overlay {
-                                        if viewModel.getStarCount(beer: item) > 5 {
-                                            Text("very bitter")
-                                        } else if viewModel.getStarCount(beer: item) > 3 {
-                                            Text("little bit")
-                                        } else {
-                                            Text("not bitter")
-                                        }
-                                    }
+                                summaryView()
                                 
                                 descriptionView(title: "Description", content: item.description ?? "")
                                 
                                 descriptionView(title: "Brewers Tips", content: item.brewersTips ?? "")
                                 
+                                foodPairingView()
+                                
+                                descriptionView(title: "Yeast", content: item.ingredients?.yeast ?? "")
+                                
+                                hopView()
+                                
+                                maltView()
+                                
                                 descriptionView(title: "Contributed By", content: item.contributedBy ?? "")
-                                
-                                ForEach(item.foodPairing, id : \.self) { food in
-                                    Text(food)
-                                }
-                                
-
-                                
                                 
                             }
                         }
-                        .zIndex(3)
                     }
-                    .padding()
+                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 50, trailing: 20))
                 }
         }
     }
@@ -212,6 +200,122 @@ struct BeerDetailView: View {
             .frame(width: 70, height: 7)
     }
     
+    private func summaryView() -> some View {
+        RoundedRectangle(cornerRadius: 15)
+            .fill(.ultraThickMaterial)
+            .frame(height: 80)
+            .overlay {
+                HStack(spacing : 50) {
+                    bitterSummaryView()
+                    
+                    alcoholPercentView()
+                    
+                    phView()
+                }
+            }
+    }
+    
+    private func bitterSummaryView() -> some View {
+        VStack(spacing : 0) {
+            Image("bitter")
+                .resizable()
+                .frame(width: 45, height: 45)
+
+            if let ibu = item.ibu {
+                if ibu >= 70 {
+                    Text("very")
+                } else if ibu >= 50 {
+                    Text("little")
+                } else {
+                    Text("normal")
+                }
+            }
+            
+        }
+        .font(.system(size: 16, weight: .bold))
+    }
+    
+    private func alcoholPercentView() -> some View {
+        VStack(spacing : 0) {
+            Image("alcohol_percent")
+                .resizable()
+                .frame(width: 45, height: 45)
+            
+            Text("\(String(format: "%.1f", item.abv ?? 0))%")
+        }
+        .font(.system(size: 16, weight: .bold))
+    }
+    
+    private func phView() -> some View {
+        VStack(spacing : 0) {
+            Image("brewing")
+                .resizable()
+                .frame(width: 45, height: 45)
+            
+            Text("\(String(format: "%.1f", item.ph ?? 0))")
+        }
+        .font(.system(size: 16, weight: .bold))
+    }
+    
+    private func foodPairingView() -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Food Paring")
+                .font(.system(size: 17, weight: .bold))
+            
+            ForEach(item.foodPairing, id : \.self) { food in
+                Text(food)
+            }
+            .font(.system(size: 13, weight: .regular))
+        }
+    }
+    
+    private func hopView() -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Hops")
+                .font(.system(size: 17, weight: .bold))
+            
+            if let hops = item.ingredients?.hops {
+                ForEach(hops) { hop in
+                    Divider()
+                    HStack(spacing : 10) {
+                        Image("hop")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text(hop.name ?? "")
+                        Text("/")
+                        Text(hop.attribute ?? "")
+                        Text("/")
+                        Text(hop.add ?? "")
+                    }
+                }
+                .font(.system(size: 13, weight: .medium))
+            }
+        }
+    }
+    
+    private func maltView() -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text("Malts")
+                .font(.system(size: 17, weight: .bold))
+            
+            if let malts = item.ingredients?.malt {
+                ForEach(malts) { malt in
+                    Divider()
+                    HStack(spacing : 10) {
+                        Image("malt")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text(malt.name ?? "")
+                        Text("/")
+                        Text("\(String(format: "%.1f", malt.amount?.value ?? 0))")
+                        Text("/")
+                        Text(malt.amount?.unit ?? "")
+                    }
+                }
+                .font(.system(size: 13, weight: .medium))
+            }
+        }
+    }
     
 }
 

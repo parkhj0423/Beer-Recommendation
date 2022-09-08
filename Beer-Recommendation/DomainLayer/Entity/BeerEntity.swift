@@ -59,7 +59,8 @@ struct HopEntity : Codable, Identifiable  {
 }
 
 // MARK: - Malt
-struct MaltEntity : Codable  {
+struct MaltEntity : Codable, Identifiable  {
+    public var id  = UUID()
     let name: String?
     let amount: BoilVolumeEntity?
 }

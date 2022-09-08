@@ -52,7 +52,7 @@ struct BeerRecommendView: View {
                 Text("ph : \(String(format: "%.1f", item.ph ?? 0))")
                 Text("abv : \(String(format: "%.1f", item.abv ?? 0))%")
                 Text("srm : \(String(format: "%.1f", item.srm ?? 0))")
-                Text("Attenuation Level : \(String(format: "%.1f", item.attenuationLevel ?? 0))")
+                Text("Attenuation Level : \(String(format: "%.1f", item.attenuationLevel ?? 0))%")
                 Text("Hop : \(item.ingredients?.hops?.first?.name ?? "")")
                 Text("Malt : \(item.ingredients?.malt?.first?.name ?? "")")
                 Text(item.firstBrewed ?? "")
