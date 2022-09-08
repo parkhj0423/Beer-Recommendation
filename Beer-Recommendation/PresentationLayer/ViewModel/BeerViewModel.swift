@@ -120,4 +120,10 @@ final class BeerViewModel : ObservableObject {
     public func isSearched() -> Bool {
         return !searchedBeers.isEmpty
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.height {
+            scrollView.contentOffset.y = scrollView.contentSize.height - scrollView.bounds.height
+        }
+    }
 }

@@ -13,9 +13,15 @@ struct BeerDetailView: View {
     
     @ObservedObject var viewModel : BeerViewModel
     var item : BeerEntity
+    @StateObject var scrollViewUtil : ScrollViewUtil
     
     @State private var showNavigationTitle : Bool = false
     
+    init(viewModel : BeerViewModel, item : BeerEntity) {
+        self.viewModel = viewModel
+        self.item = item
+        self._scrollViewUtil = StateObject.init(wrappedValue: ScrollViewUtil())
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -61,6 +67,10 @@ struct BeerDetailView: View {
             
             detailView()
                 .frame(minHeight : descriptionHeight - 50)
+        }
+        .introspectScrollView { scrollView in
+            scrollViewUtil.isBottomBounceDisable = true
+            scrollView.delegate = scrollViewUtil
         }
     }
     

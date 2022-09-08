@@ -23,6 +23,7 @@
 		D2AB36AE28BDF4E900F41EC8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36AD28BDF4E900F41EC8 /* UIApplication.swift */; };
 		D2AB36B528C0E5C900F41EC8 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36B428C0E5C900F41EC8 /* BeerDetailView.swift */; };
 		D2AB36BA28C8DFF500F41EC8 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D2AB36B928C8DFF500F41EC8 /* Introspect */; };
+		D2AB36BC28CA0B8200F41EC8 /* ScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36BB28CA0B8200F41EC8 /* ScrollViewUtil.swift */; };
 		D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */; };
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		D2AB36AB28BDEBB900F41EC8 /* TextFieldClearViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearViewModifier.swift; sourceTree = "<group>"; };
 		D2AB36AD28BDF4E900F41EC8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		D2AB36B428C0E5C900F41EC8 /* BeerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailView.swift; sourceTree = "<group>"; };
+		D2AB36BB28CA0B8200F41EC8 /* ScrollViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewUtil.swift; sourceTree = "<group>"; };
 		D2B36D482890DEB9009C5127 /* Beer-Recommendation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beer-Recommendation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D4B2890DEB9009C5127 /* Beer_RecommendationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationApp.swift; sourceTree = "<group>"; };
 		D2B36D4D2890DEB9009C5127 /* BeerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				D2BEF0A1289EC4480003BA5F /* Network */,
 				D2445C3928B51D6B001FB9DE /* PreferenceUtil.swift */,
+				D2AB36BB28CA0B8200F41EC8 /* ScrollViewUtil.swift */,
 			);
 			path = CommonUtil;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */,
 				D2BEF0CF28A93E0D0003BA5F /* LoadingViewModifier.swift in Sources */,
 				D2AB36AE28BDF4E900F41EC8 /* UIApplication.swift in Sources */,
+				D2AB36BC28CA0B8200F41EC8 /* ScrollViewUtil.swift in Sources */,
 				D2AB36A628BBAD8C00F41EC8 /* BeerRecommendView.swift in Sources */,
 				D2445C3A28B51D6B001FB9DE /* PreferenceUtil.swift in Sources */,
 				D2AB36A228BA14BB00F41EC8 /* BeerListItemView.swift in Sources */,
