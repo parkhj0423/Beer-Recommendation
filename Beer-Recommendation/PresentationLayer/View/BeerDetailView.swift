@@ -259,7 +259,7 @@ struct BeerDetailView: View {
     
     private func foodPairingView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
-            Text("Food Paring")
+            Text("Food Pairng")
                 .font(.system(size: 17, weight: .bold))
             
             ForEach(item.foodPairing, id : \.self) { food in

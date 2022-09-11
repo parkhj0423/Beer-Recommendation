@@ -35,7 +35,7 @@ struct MainTabView: View {
                     }
                 }
                 
-                if !self.showTabView {
+                if !self.showTabView || viewRouter.currentTab == .cart {
                     tabBarView()
                 }                
             }
