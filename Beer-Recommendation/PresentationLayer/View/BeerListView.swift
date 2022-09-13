@@ -27,7 +27,7 @@ struct BeerListView: View {
                     recommendView()
                 }
                 
-                VStack(alignment : .leading, spacing : 0) {
+                LazyVStack(alignment : .leading, spacing : 0) {
                     beerListView()
                 }
                 .padding()

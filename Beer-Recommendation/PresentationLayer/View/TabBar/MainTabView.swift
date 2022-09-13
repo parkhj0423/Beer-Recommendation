@@ -35,7 +35,7 @@ struct MainTabView: View {
                     }
                 }
                 
-                if !self.showTabView || viewRouter.currentTab == .cart {
+                if isShowTabView() {
                     tabBarView()
                 }                
             }
@@ -73,5 +73,9 @@ struct MainTabView: View {
         withAnimation(.spring()) {
             self.showTabView.toggle()
         }
+    }
+    
+    private func isShowTabView() -> Bool {
+        !self.showTabView || viewRouter.currentTab == .cart
     }
 }
