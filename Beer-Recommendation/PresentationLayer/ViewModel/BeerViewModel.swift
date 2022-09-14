@@ -38,19 +38,24 @@ final class BeerViewModel : ObservableObject {
         self.viewModelError = nil
     }
     
-    public func getBeersWithPaging(initialLoad : Bool? = false) async throws {
+    public func getBeersWithPaging(page : Int? = nil) async throws {
         cleanError()
         do {
             self.isLoading = true
-            let beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
-                        
-            if initialLoad != false {
+            
+            var beers : [BeerEntity] = []
+            
+            if let page = page {
+                beers = try await useCase.getBeersWithPaging(page: page, size: currentSize)
                 self.currentPage = 1
                 self.beers = beers
             } else {
+                beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
                 self.currentPage += 1
                 self.beers.append(contentsOf: beers)
             }
+                        
+            
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
             self.isLoading = false

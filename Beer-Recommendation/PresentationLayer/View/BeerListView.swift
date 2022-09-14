@@ -20,17 +20,22 @@ struct BeerListView: View {
     
     var body: some View {
         VStack(spacing : 20) {
-            ScrollView(showsIndicators: false) {
-                searchView()
-                
-                if !viewModel.isSearched() {
-                    recommendView()
+            ScrollViewReader { proxy in
+                ScrollView(showsIndicators: false) {
+                    searchView()
+                        .onAppear {
+                            proxy.scrollTo("top")
+                        }
+                    
+                    if !viewModel.isSearched() {
+                        recommendView()
+                    }
+                    
+                    LazyVStack(alignment : .leading, spacing : 0) {
+                        beerListView()
+                    }
+                    .padding()
                 }
-                
-                LazyVStack(alignment : .leading, spacing : 0) {
-                    beerListView()
-                }
-                .padding()
             }
         }
         .onAppear {
@@ -43,13 +48,15 @@ struct BeerListView: View {
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)
         .task {
-            try? await viewModel.getBeersWithPaging(initialLoad: true)
+            try? await viewModel.getBeersWithPaging(page: 1)
             try? await viewModel.getRandomBeer()
         }
+        
     }
     
     private func searchView() -> some View {
         CustomTextField(text: $viewModel.searchKeyword)
+            .id("top")
     }
     
     private func recommendView() -> some View {
@@ -96,7 +103,6 @@ struct BeerListView: View {
                 }
                 .task {
                     if viewModel.isLastItem(index: index) {
-                        print(index)
                         try? await viewModel.getBeersWithPaging()
                     }
                 }
