@@ -41,8 +41,6 @@ final class BeerViewModel : ObservableObject {
     public func getBeersWithPaging(page : Int? = nil) async throws {
         cleanError()
         do {
-            self.isLoading = true
-            
             var beers : [BeerEntity] = []
             
             if let page = page {
@@ -54,15 +52,10 @@ final class BeerViewModel : ObservableObject {
                 self.currentPage += 1
                 self.beers.append(contentsOf: beers)
             }
-                        
-            
-            self.isLoading = false
         } catch NetworkError.internetConnectionError {
-            self.isLoading = false
             self.viewModelError = .internetConnectionError
         } catch {
             self.viewModelError = .failToLoadData
-            self.isLoading = false
         }
     }
     

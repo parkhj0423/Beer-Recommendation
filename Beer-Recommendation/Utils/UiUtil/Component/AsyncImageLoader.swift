@@ -30,8 +30,10 @@ struct AsyncImageLoader: View {
                     .frame(width: width, height : height, alignment: .center)
             }
         } else {
-            Image(systemName: "questionmark.circle.fill")
-                .frame(minWidth: 100, alignment: .center)
+            Image("beer.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: width, height : height, alignment: .center)
                 .blur(radius: isBlur != nil ? isBlur! : 0)
         }
     }

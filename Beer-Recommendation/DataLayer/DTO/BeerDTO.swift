@@ -14,9 +14,9 @@ struct BeerDTO : Codable {
     let image_url: String?
     let abv: Double?
     let ibu: Double?
-    let target_fg: Int?
+    let target_fg: Double?
     let target_og: Double?
-    let ebc: Int?
+    let ebc: Double?
     let srm, ph: Double?
     let attenuation_level: Double?
     let volume, boil_volume: BoilVolumeDTO?
