@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BeerUseCaseInterface {
-    func getAllBeers() async throws -> [BeerEntity]
+    func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerEntity]
     func getRandomBeer() async throws -> [BeerEntity]
     func getBeerWithKeyword(keyword : String) async throws -> [BeerEntity]
 }
@@ -21,8 +21,8 @@ final class BeerUseCase : BeerUseCaseInterface {
         self.repository = repository
     }
     
-    func getAllBeers() async throws -> [BeerEntity] {
-        return try await repository.getAllBeers()
+    func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerEntity] {
+        return try await repository.getBeersWithPaging(page: page, size: size)
     }
     
     func getRandomBeer() async throws -> [BeerEntity] {

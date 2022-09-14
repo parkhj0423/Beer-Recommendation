@@ -8,18 +8,18 @@
 import Foundation
 
 protocol BeerDataSourceInterface {
-    func getAllBeers() async throws -> [BeerDTO]
+    func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerDTO]
     func getRandomBeer() async throws -> [BeerDTO]
     func getBeerWithKeyword(keyword : String) async throws -> [BeerDTO]
 }
 
 public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
-    func getAllBeers() async throws -> [BeerDTO] {
+    func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerDTO] {
         let url : String = "beers/"
         
         let parameters : [URLQueryItem] = [
-            URLQueryItem(name: "page", value: "1"),
-            URLQueryItem(name: "per_page", value: "5")
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "per_page", value: "\(size)")
         ]
         
         return try await sendRequest(url: url, method: .GET, parameters : parameters)

@@ -16,8 +16,8 @@ final class BeerRepository : BeerRepositoryInterface {
     }
     
     
-    func getAllBeers() async throws -> [BeerEntity] {
-        return try await dataSource.getAllBeers()
+    func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerEntity] {
+        return try await dataSource.getBeersWithPaging(page: page, size: size)
             .map({ beerDTO in
                 let beerEntity = beerDTO.toEntity()
                 return beerEntity

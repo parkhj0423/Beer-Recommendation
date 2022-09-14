@@ -43,7 +43,7 @@ struct BeerListView: View {
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)
         .task {
-            try? await viewModel.getAllBeers()
+            try? await viewModel.getBeersWithPaging(initialLoad: true)
             try? await viewModel.getRandomBeer()
         }
     }
@@ -93,6 +93,12 @@ struct BeerListView: View {
                 } label: {
                     BeerListItemView(item: item)
                         .padding(.top, index % 2 == 0 ? 0 : 70)
+                }
+                .task {
+                    if viewModel.isLastItem(index: index) {
+                        print(index)
+                        try? await viewModel.getBeersWithPaging()
+                    }
                 }
             }
         }

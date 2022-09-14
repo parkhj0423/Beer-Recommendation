@@ -24,6 +24,9 @@ final class BeerViewModel : ObservableObject {
     @Published public var isLoading : Bool = false
     @Published public var viewModelError : BeerViewModelError?
     
+    private var currentPage : Int = 1
+    private var currentSize : Int = 10
+    
     init(useCase : BeerUseCaseInterface) {
         self.useCase = useCase
         
@@ -35,12 +38,19 @@ final class BeerViewModel : ObservableObject {
         self.viewModelError = nil
     }
     
-    public func getAllBeers() async throws {
+    public func getBeersWithPaging(initialLoad : Bool? = false) async throws {
         cleanError()
         do {
             self.isLoading = true
-            let beers = try await useCase.getAllBeers()
-            self.beers = beers
+            let beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
+                        
+            if initialLoad != false {
+                self.currentPage = 1
+                self.beers = beers
+            } else {
+                self.currentPage += 1
+                self.beers.append(contentsOf: beers)
+            }
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
             self.isLoading = false
@@ -124,14 +134,12 @@ final class BeerViewModel : ObservableObject {
         }
     }
     
+    public func isLastItem(index : Int) -> Bool {
+        return index == beers.count - 1
+    }
     
     public func isSearched() -> Bool {
         return !searchedBeers.isEmpty
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.height {
-            scrollView.contentOffset.y = scrollView.contentSize.height - scrollView.bounds.height
-        }
-    }
 }
