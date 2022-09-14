@@ -26,6 +26,7 @@ final class BeerViewModel : ObservableObject {
     
     private var currentPage : Int = 1
     private var currentSize : Int = 10
+    private var isEmptyListCalled : Bool = false
     
     init(useCase : BeerUseCaseInterface) {
         self.useCase = useCase
@@ -47,10 +48,19 @@ final class BeerViewModel : ObservableObject {
                 beers = try await useCase.getBeersWithPaging(page: page, size: currentSize)
                 self.currentPage = 1
                 self.beers = beers
+                self.isEmptyListCalled = false
             } else {
-                beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
-                self.currentPage += 1
-                self.beers.append(contentsOf: beers)
+                if !isEmptyListCalled {
+                    beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
+                } 
+                
+                if beers.isEmpty {
+                    self.isEmptyListCalled = true
+                } else {
+                    self.isEmptyListCalled = false
+                    self.currentPage += 1
+                    self.beers.append(contentsOf: beers)
+                }
             }
         } catch NetworkError.internetConnectionError {
             self.viewModelError = .internetConnectionError
