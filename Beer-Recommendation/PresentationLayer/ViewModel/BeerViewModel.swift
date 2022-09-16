@@ -9,6 +9,14 @@ import Foundation
 import Combine
 import UIKit
 
+public enum Category : String {
+    case all = "All"
+    case brewedBefore2000 = "Before 2000's"
+    case brewedAfter2000 = "After 2000's"
+    case abvOver70 = "ABV over 70"
+    case abvUnder70 = "ABV under 70"
+}
+
 // MainActor로 선언하여 모든 행위를 메인 쓰레드에서 동작하게 함
 @MainActor
 final class BeerViewModel : ObservableObject {

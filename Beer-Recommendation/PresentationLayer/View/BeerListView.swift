@@ -77,7 +77,29 @@ struct BeerListView: View {
     }
     
     private func categoryView() -> some View {
-        Text("category view will show here")
+        ScrollView(.horizontal,showsIndicators: false) {
+            HStack {
+               
+                    Button {
+                       
+                    } label : {
+                        Text("category")
+                            .font(.system(size: 12))
+                            .fontWeight(.regular)
+                            .frame(minHeight: 33)
+                            .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                            .foregroundColor(.black)
+                            .background(.white)
+                            .cornerRadius(16)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(.black, lineWidth: 1)
+                            )
+                    }
+                
+                
+            }
+        }
     }
     
     
