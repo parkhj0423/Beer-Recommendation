@@ -39,5 +39,13 @@ final class BeerRepository : BeerRepositoryInterface {
                 return beerEntity
             })
     }
+    
+    func getBeersByCategory(category : Category) async throws -> [BeerEntity] {
+        return try await dataSource.getBeersByCategory(category: category)
+            .map({ beerDTO in
+                let beerEntity = beerDTO.toEntity()
+                return beerEntity
+            })
+    }
 
 }

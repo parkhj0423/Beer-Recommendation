@@ -11,6 +11,7 @@ protocol BeerDataSourceInterface {
     func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerDTO]
     func getRandomBeer() async throws -> [BeerDTO]
     func getBeerWithKeyword(keyword : String) async throws -> [BeerDTO]
+    func getBeersByCategory(category : Category) async throws -> [BeerDTO]
 }
 
 public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
@@ -37,6 +38,27 @@ public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
         let parameters : [URLQueryItem] = [
             URLQueryItem(name: "beer_name", value: keyword)
         ]
+        
+        return try await sendRequest(url: url, method: .GET, parameters : parameters)
+    }
+    
+    func getBeersByCategory(category : Category) async throws -> [BeerDTO] {
+        let url : String = "beers/"
+        
+        var parameters : [URLQueryItem] = []
+        
+        switch category {
+        case .all:
+            break
+        case .brewedBefore2000:
+            parameters.append(URLQueryItem(name: "brewed_before", value: "01-2000"))
+        case .brewedAfter2000:
+            parameters.append(URLQueryItem(name: "brewed_after", value: "01-2000"))
+        case .abvOver70:
+            parameters.append(URLQueryItem(name: "abv_gt", value: "70"))
+        case .abvUnder70:
+            parameters.append(URLQueryItem(name: "abv_lt", value: "70"))
+        }
         
         return try await sendRequest(url: url, method: .GET, parameters : parameters)
     }

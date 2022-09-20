@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-public enum Category : String {
+public enum Category : String, CaseIterable {
     case all = "All"
     case brewedBefore2000 = "Before 2000's"
     case brewedAfter2000 = "After 2000's"
@@ -28,6 +28,7 @@ final class BeerViewModel : ObservableObject {
     @Published public var searchedBeers : [BeerEntity] = []
     @Published public var randomBeer : [BeerEntity] = []
     @Published public var searchKeyword : String = ""
+    @Published public var selectedCategory : Category = .all
     
     @Published public var isLoading : Bool = false
     @Published public var viewModelError : BeerViewModelError?
@@ -38,9 +39,7 @@ final class BeerViewModel : ObservableObject {
     
     init(useCase : BeerUseCaseInterface) {
         self.useCase = useCase
-        
         inputKeyword()
-        
     }
     
     public func cleanError() {
@@ -61,7 +60,6 @@ final class BeerViewModel : ObservableObject {
                 if !isEmptyListCalled {
                     beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
                 } 
-                
                 if beers.isEmpty {
                     self.isEmptyListCalled = true
                 } else {
@@ -83,7 +81,6 @@ final class BeerViewModel : ObservableObject {
         do {
             self.isLoading = true
             let randomBeer = try await useCase.getRandomBeer()
-            //            print(randomBeer)
             self.randomBeer = randomBeer
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
@@ -102,8 +99,6 @@ final class BeerViewModel : ObservableObject {
             .sink(receiveValue: { [weak self] keyword in
                 Task {
                     UIApplication.shared.endEditing()
-                    //MARK: searchKeyword가 있을때 보여주고 없을때 메인뷰 보여주면 될듯
-                    //MARK: 검색결과가 없을때 별도의 무언가가 필요함 현재 검색결과가 없으면 그냥 추천화면 뜸
                     if keyword != "" {
                         try await self?.getBeerWithKeyword(keyword: keyword)
                     } else {
@@ -127,6 +122,28 @@ final class BeerViewModel : ObservableObject {
             self.isLoading = false
         }
     }
+    
+    public func getBeersByCategory() async throws {
+        cleanError()
+        do {
+            self.isLoading = true
+            let beersByCategory = try await useCase.getBeersByCategory(category: self.selectedCategory)
+            self.beers = beersByCategory
+            self.isLoading = false
+            
+        } catch NetworkError.internetConnectionError {
+            self.isLoading = false
+            self.viewModelError = .internetConnectionError
+        } catch {
+            self.viewModelError = .failToLoadData
+            self.isLoading = false
+        }
+    }
+    
+    public func setCategory(category : Category) {
+        self.selectedCategory = category
+    }
+    
     
     public func getStarCount(beer : BeerEntity) -> Int {
         if let ibu = beer.ibu {
@@ -155,7 +172,7 @@ final class BeerViewModel : ObservableObject {
     }
     
     public func isSearched() -> Bool {
-        return !searchedBeers.isEmpty
+        return !searchedBeers.isEmpty || !self.searchKeyword.isEmpty
     }
     
 }
