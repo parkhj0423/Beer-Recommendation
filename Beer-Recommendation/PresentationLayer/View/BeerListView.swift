@@ -31,8 +31,13 @@ struct BeerListView: View {
                         recommendView()
                     }
                     
-                    LazyVStack(alignment : .leading, spacing : 0) {
-                        beerListView()
+                    LazyVStack(alignment : .leading, spacing : 0, pinnedViews : [.sectionHeaders]) {
+                        Section {
+                            beerListView()
+                        } header : {
+                            categoryView()
+                        }
+                       
                     }
                     
                 }
@@ -61,9 +66,6 @@ struct BeerListView: View {
     
     private func recommendView() -> some View {
         VStack(alignment : .leading) {
-            Text("Today's Beer!!!")
-                .bold()
-                .font(.title)
             
             if let randomBeer = viewModel.randomBeer.first {
                 ZStack(alignment: .bottomTrailing) {
@@ -112,9 +114,7 @@ struct BeerListView: View {
     
     @ViewBuilder
     private func beerListView() -> some View {
-        if !viewModel.isSearched() {
-            categoryView()
-        } else {
+        if viewModel.isSearched() {
             Text("\(viewModel.searchedBeers.count) items have been searched")
                 .bold()
                 .font(.title3)
