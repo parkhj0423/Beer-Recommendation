@@ -43,6 +43,7 @@ struct BeerListView: View {
                 }
             }
         }
+        .ignoresSafeArea(.container, edges : .vertical)
         .onAppear {
             toggleTabView()
         }
