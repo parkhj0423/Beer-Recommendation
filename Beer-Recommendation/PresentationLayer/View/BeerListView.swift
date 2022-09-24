@@ -13,6 +13,8 @@ struct BeerListView: View {
     @StateObject var viewModel : BeerViewModel
     var toggleTabView : () -> ()
     
+    @State private var topOffset : CGFloat = 0
+    
     let itemLayout : [GridItem] = [
         GridItem(.flexible(minimum: 150)),
         GridItem(.flexible(minimum: 150))
@@ -31,19 +33,15 @@ struct BeerListView: View {
                         recommendView()
                     }
                     
+                    categoryView()
+                    
                     LazyVStack(alignment : .leading, spacing : 0, pinnedViews : [.sectionHeaders]) {
-                        Section {
-                            beerListView()
-                        } header : {
-                            categoryView()
-                        }
-                       
+                        beerListView()
                     }
                     
                 }
             }
         }
-        .ignoresSafeArea(.container, edges : .vertical)
         .onAppear {
             toggleTabView()
         }
@@ -80,36 +78,51 @@ struct BeerListView: View {
     }
     
     private func categoryView() -> some View {
-        ScrollView(.horizontal,showsIndicators: false) {
-            HStack {
-                ForEach(Category.allCases, id :\.rawValue) { category in
-                    Button {
-                        Task {
-                            viewModel.setCategory(category: category)
-                            if category == .all {
-                                try? await viewModel.getBeersWithPaging()
-                            } else {
-                                try? await viewModel.getBeersByCategory()
+        GeometryReader { geometry in
+            let minY = geometry.frame(in: .global).minY
+            ScrollView(.horizontal,showsIndicators: false) {
+                HStack {
+                    ForEach(Category.allCases, id :\.rawValue) { category in
+                        Button {
+                            Task {
+                                viewModel.setCategory(category: category)
+                                if category == .all {
+                                    try? await viewModel.getBeersWithPaging()
+                                } else {
+                                    try? await viewModel.getBeersByCategory()
+                                }
                             }
+                        } label : {
+                            Text(category.rawValue)
+                                .font(.system(size: 15))
+                                .fontWeight(viewModel.selectedCategory == category ? .medium : .regular)
+                                .frame(minHeight: 36)
+                                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                                .foregroundColor(viewModel.selectedCategory == category ? .black : .white)
+                                .background(viewModel.selectedCategory == category ? .white : .gray)
+                                .cornerRadius(16)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(.black, lineWidth: 1)
+                                )
                         }
-                    } label : {
-                        Text(category.rawValue)
-                            .font(.system(size: 15))
-                            .fontWeight(viewModel.selectedCategory == category ? .medium : .regular)
-                            .frame(minHeight: 36)
-                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
-                            .foregroundColor(viewModel.selectedCategory == category ? .black : .white)
-                            .background(viewModel.selectedCategory == category ? .white : .gray)
-                            .cornerRadius(16)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(.black, lineWidth: 1)
-                            )
                     }
                 }
             }
+            .onChange(of: minY) { offset in
+                self.topOffset = offset - 80
+            }
+            .offset(y : self.topOffset < 0 ? -self.topOffset : 0)
+            .overlay(
+                ZStack {
+                    Color.white
+                        .frame(width: geometry.size.width, height: geometry.safeAreaInsets.top + 80, alignment: .center)
+                }
+                    .ignoresSafeArea()
+                    .offset(y : self.topOffset < 0 ? -self.topOffset : 0)
+            )
         }
-        .padding(.vertical, 20)
+        .zIndex(5)
     }
     
     
