@@ -23,23 +23,42 @@ struct BeerListView: View {
     var body: some View {
         VStack(spacing : 20) {
             ScrollViewReader { proxy in
-                ScrollView {
-                    searchView()
-                        .onAppear {
-                            proxy.scrollTo("top")
+                ZStack(alignment : .top) {
+                    
+//                    if self.topOffset < 0 {
+//                        let scenes = UIApplication.shared.connectedScenes
+//                        let windowScene = scenes.first as? UIWindowScene
+//                        let window = windowScene?.windows.first
+//
+//                        categoryView()
+//                            .background(
+//                                BlurBackgroundView()
+//                                    .frame(height : (window?.safeAreaInsets.top ?? 0) + 80)
+//                                    .edgesIgnoringSafeArea(.top)
+//                            )
+//
+//
+//                    }
+                    
+                    ScrollView {
+                        searchView()
+                            .onAppear {
+                                proxy.scrollTo("top")
+                            }
+                        
+                        if !viewModel.isSearched() {
+                            recommendView()
                         }
-                    
-                    if !viewModel.isSearched() {
-                        recommendView()
+                        
+                        categoryView()
+                        
+                        LazyVStack(alignment : .leading, spacing : 0) {
+                            beerListView()
+                        }
+                        
                     }
-                    
-                    categoryView()
-                    
-                    LazyVStack(alignment : .leading, spacing : 0, pinnedViews : [.sectionHeaders]) {
-                        beerListView()
-                    }
-                    
                 }
+                
             }
         }
         .onAppear {
@@ -113,14 +132,6 @@ struct BeerListView: View {
                 self.topOffset = offset - 80
             }
             .offset(y : self.topOffset < 0 ? -self.topOffset : 0)
-            .overlay(
-                ZStack {
-                    Color.white
-                        .frame(width: geometry.size.width, height: geometry.safeAreaInsets.top + 80, alignment: .center)
-                }
-                    .ignoresSafeArea()
-                    .offset(y : self.topOffset < 0 ? -self.topOffset : 0)
-            )
         }
         .zIndex(5)
     }

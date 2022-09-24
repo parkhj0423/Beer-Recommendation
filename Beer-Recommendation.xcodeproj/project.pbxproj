@@ -45,6 +45,7 @@
 		D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */; };
 		D2BEF0D428AA3A900003BA5F /* BeerViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D328AA3A900003BA5F /* BeerViewModelError.swift */; };
 		D2BEF0D628AA3E6C0003BA5F /* ErrorModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0D528AA3E6C0003BA5F /* ErrorModal.swift */; };
+		D2C02C2428DF525200F7ACEC /* BlurBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C02C2328DF525200F7ACEC /* BlurBackgroundView.swift */; };
 		D2CC6B1C28B6697C00232F92 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CC6B1B28B6697C00232F92 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		D2BEF0D028A9485F0003BA5F /* ErrorModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModalViewModifier.swift; sourceTree = "<group>"; };
 		D2BEF0D328AA3A900003BA5F /* BeerViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModelError.swift; sourceTree = "<group>"; };
 		D2BEF0D528AA3E6C0003BA5F /* ErrorModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModal.swift; sourceTree = "<group>"; };
+		D2C02C2328DF525200F7ACEC /* BlurBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurBackgroundView.swift; sourceTree = "<group>"; };
 		D2CC6B1B28B6697C00232F92 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 				D2AB36A128BA14BB00F41EC8 /* BeerListItemView.swift */,
 				D2AB36A528BBAD8C00F41EC8 /* BeerRecommendView.swift */,
 				D2AB36B428C0E5C900F41EC8 /* BeerDetailView.swift */,
+				D2C02C2328DF525200F7ACEC /* BlurBackgroundView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				D2BEF0D628AA3E6C0003BA5F /* ErrorModal.swift in Sources */,
 				D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */,
 				D2445B9428B13DBA001FB9DE /* CommentView.swift in Sources */,
+				D2C02C2428DF525200F7ACEC /* BlurBackgroundView.swift in Sources */,
 				D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */,
 				D2BEF0CA28A7E5220003BA5F /* AppDIContainer.swift in Sources */,
 				D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */,
