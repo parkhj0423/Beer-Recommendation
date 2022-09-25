@@ -23,42 +23,23 @@ struct BeerListView: View {
     var body: some View {
         VStack(spacing : 20) {
             ScrollViewReader { proxy in
-                ZStack(alignment : .top) {
-                    
-//                    if self.topOffset < 0 {
-//                        let scenes = UIApplication.shared.connectedScenes
-//                        let windowScene = scenes.first as? UIWindowScene
-//                        let window = windowScene?.windows.first
-//
-//                        categoryView()
-//                            .background(
-//                                BlurBackgroundView()
-//                                    .frame(height : (window?.safeAreaInsets.top ?? 0) + 80)
-//                                    .edgesIgnoringSafeArea(.top)
-//                            )
-//
-//
-//                    }
-                    
-                    ScrollView {
-                        searchView()
-                            .onAppear {
-                                proxy.scrollTo("top")
-                            }
-                        
-                        if !viewModel.isSearched() {
-                            recommendView()
+                ScrollView {
+                    searchView()
+                        .onAppear {
+                            proxy.scrollTo("top")
                         }
-                        
-                        categoryView()
-                        
-                        LazyVStack(alignment : .leading, spacing : 0) {
-                            beerListView()
-                        }
-                        
+                    
+                    if !viewModel.isSearched() {
+                        recommendView()
                     }
+                    
+                    categoryView()
+                    
+                    LazyVStack(alignment : .leading, spacing : 0) {
+                        beerListView()
+                    }
+                    
                 }
-                
             }
         }
         .onAppear {
@@ -67,6 +48,7 @@ struct BeerListView: View {
         .onDisappear {
             toggleTabView()
         }
+        .navigationBarHidden(true)
         .showSheet(sheetManager: sheetManager)
         .showErrorModal(error: $viewModel.viewModelError, onDismiss: { viewModel.cleanError() })
         .showLoadingView(isLoading: viewModel.isLoading)
@@ -99,6 +81,10 @@ struct BeerListView: View {
     private func categoryView() -> some View {
         GeometryReader { geometry in
             let minY = geometry.frame(in: .global).minY
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.first
+            
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack {
                     ForEach(Category.allCases, id :\.rawValue) { category in
@@ -129,9 +115,15 @@ struct BeerListView: View {
                 }
             }
             .onChange(of: minY) { offset in
-                self.topOffset = offset - 80
+                self.topOffset = offset - 50
             }
             .offset(y : self.topOffset < 0 ? -self.topOffset : 0)
+            .background(
+                BlurBackgroundView()
+                    .frame(height : self.topOffset < 0 ? (window?.safeAreaInsets.top ?? 0) + 50 : 0, alignment: .top)
+                    .offset(y : self.topOffset < 0 ? -self.topOffset - 20 : 0)
+                    .edgesIgnoringSafeArea(.top)
+            )
         }
         .zIndex(5)
     }
