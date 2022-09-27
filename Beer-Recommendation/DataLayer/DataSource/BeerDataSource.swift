@@ -54,10 +54,10 @@ public final class BeerDataSource : NetworkUtil, BeerDataSourceInterface {
             parameters.append(URLQueryItem(name: "brewed_before", value: "01-2000"))
         case .brewedAfter2000:
             parameters.append(URLQueryItem(name: "brewed_after", value: "01-2000"))
-        case .abvOver70:
-            parameters.append(URLQueryItem(name: "abv_gt", value: "70"))
-        case .abvUnder70:
-            parameters.append(URLQueryItem(name: "abv_lt", value: "70"))
+        case .abvOver15:
+            parameters.append(URLQueryItem(name: "abv_gt", value: "15"))
+        case .abvUnder15:
+            parameters.append(URLQueryItem(name: "abv_lt", value: "15"))
         }
         
         return try await sendRequest(url: url, method: .GET, parameters : parameters)

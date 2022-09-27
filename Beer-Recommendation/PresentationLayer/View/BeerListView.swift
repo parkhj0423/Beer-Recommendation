@@ -171,7 +171,7 @@ struct BeerListView: View {
                         Image(systemName: "arrow.forward")
                             .foregroundColor(Color.black)
                     }
-                    .padding(.trailing, 20)
+                    .padding([.bottom, .trailing], 20)
             }
         }
     }

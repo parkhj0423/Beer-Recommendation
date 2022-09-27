@@ -13,8 +13,8 @@ public enum Category : String, CaseIterable {
     case all = "All"
     case brewedBefore2000 = "Before 2000's"
     case brewedAfter2000 = "After 2000's"
-    case abvOver70 = "ABV over 70"
-    case abvUnder70 = "ABV under 70"
+    case abvOver15 = "ABV over 15"
+    case abvUnder15 = "ABV under 15"
 }
 
 // MainActor로 선언하여 모든 행위를 메인 쓰레드에서 동작하게 함
