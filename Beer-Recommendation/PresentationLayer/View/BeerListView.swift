@@ -115,13 +115,13 @@ struct BeerListView: View {
                 }
             }
             .onChange(of: minY) { offset in
-                self.topOffset = offset - 50
+                self.topOffset = offset - 70
             }
             .offset(y : self.topOffset < 0 ? -self.topOffset : 0)
             .background(
                 BlurBackgroundView()
-                    .frame(height : self.topOffset < 0 ? (window?.safeAreaInsets.top ?? 0) + 50 : 0, alignment: .top)
-                    .offset(y : self.topOffset < 0 ? -self.topOffset - 20 : 0)
+                    .frame(height : self.topOffset < 0 ? (window?.safeAreaInsets.top ?? 0) + 70 : 0, alignment: .top)
+                    .offset(y : self.topOffset < 0 ? -self.topOffset - 40 : 0)
                     .edgesIgnoringSafeArea(.top)
             )
         }
