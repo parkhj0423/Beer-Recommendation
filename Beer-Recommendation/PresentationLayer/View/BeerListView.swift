@@ -31,9 +31,9 @@ struct BeerListView: View {
                     
                     if !viewModel.isSearched() {
                         recommendView()
+                        
+                        categoryView()
                     }
-                    
-                    categoryView()
                     
                     LazyVStack(alignment : .leading, spacing : 0) {
                         beerListView()
