@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C4153AB28E88E0F00A6B496 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */; };
+		8C4153AE28E8919200A6B496 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153AD28E8919200A6B496 /* PreferenceManager.swift */; };
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
 		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
 		D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */; };
@@ -67,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		8C4153AD28E8919200A6B496 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetViewModifier.swift; sourceTree = "<group>"; };
@@ -138,6 +142,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C4153A928E88DFC00A6B496 /* PropertyWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */,
+			);
+			path = PropertyWrapper;
+			sourceTree = "<group>";
+		};
+		8C4153AC28E8918000A6B496 /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				D2445C3928B51D6B001FB9DE /* PreferenceUtil.swift */,
+				8C4153AD28E8919200A6B496 /* PreferenceManager.swift */,
+			);
+			path = Preference;
+			sourceTree = "<group>";
+		};
 		D21CF566289AB7EB00A0291B /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,8 +273,9 @@
 		D21CF572289AB87F00A0291B /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153AC28E8918000A6B496 /* Preference */,
+				8C4153A928E88DFC00A6B496 /* PropertyWrapper */,
 				D2BEF0A1289EC4480003BA5F /* Network */,
-				D2445C3928B51D6B001FB9DE /* PreferenceUtil.swift */,
 				D2AB36BB28CA0B8200F41EC8 /* ScrollViewUtil.swift */,
 			);
 			path = CommonUtil;
@@ -551,6 +573,7 @@
 				D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */,
 				D2445C3D28B5225A001FB9DE /* ViewRouter.swift in Sources */,
 				D2BEF0AC289FA1630003BA5F /* BeerViewModel.swift in Sources */,
+				8C4153AE28E8919200A6B496 /* PreferenceManager.swift in Sources */,
 				D2AB36AC28BDEBB900F41EC8 /* TextFieldClearViewModifier.swift in Sources */,
 				D2BEF0B0289FA17D0003BA5F /* BeerUseCase.swift in Sources */,
 				D2AB36AA28BDE7D700F41EC8 /* CustomTextField.swift in Sources */,
@@ -578,6 +601,7 @@
 				D2445B9728B27A27001FB9DE /* CustomTabBar.swift in Sources */,
 				D2AB36B528C0E5C900F41EC8 /* BeerDetailView.swift in Sources */,
 				D2BEF0AE289FA1750003BA5F /* BeerRepositoryInterface.swift in Sources */,
+				8C4153AB28E88E0F00A6B496 /* UserDefaultWrapper.swift in Sources */,
 				D2BEF0AA289FA0730003BA5F /* BeerEntity.swift in Sources */,
 				D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */,
 				D2BEF0CD28A93CEB0003BA5F /* View.swift in Sources */,
