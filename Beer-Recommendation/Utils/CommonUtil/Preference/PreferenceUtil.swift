@@ -10,43 +10,35 @@ import Foundation
 let FAVORITE = "favorite"
 
 class PreferenceUtil : NSObject {
-    let userDefaults = UserDefaults.standard
-    
+    @UserDefaultWrapper(key: FAVORITE, defaultValue: nil) static var favoriteList : [BeerEntity]?
     
     func getFavoriteList() -> [BeerEntity] {
-        return PreferenceManager.favoriteList ?? []
+        return PreferenceUtil.favoriteList ?? []
     }
     
     func addFavorite(beer : BeerEntity) {
-        var currentFavoriteList = PreferenceManager.favoriteList
-        
-        currentFavoriteList?.append(beer)
-        
-        PreferenceManager.favoriteList = currentFavoriteList
+        PreferenceUtil.favoriteList?.append(beer)
     }
     
     func removeFavorite(beer : BeerEntity) {
-        var currentFavoriteList : [BeerEntity] = getFavoriteList()
-        
-        currentFavoriteList = currentFavoriteList.filter({ favoriteItem in
+        let filteredList =  PreferenceUtil.favoriteList?.filter({ favoriteItem in
             return beer.id != favoriteItem.id
         })
         
-        userDefaults.set(currentFavoriteList, forKey: FAVORITE)
-        userDefaults.synchronize()
+        PreferenceUtil.favoriteList = filteredList
     }
     
     func isFavorite(beer : BeerEntity) -> Bool {
-        let currentFavoriteList : [BeerEntity] = getFavoriteList()
-        
-        let isContain = currentFavoriteList.contains(where: { favoriteItem in
+        guard let isContain = PreferenceUtil.favoriteList?.contains(where: { favoriteItem in
             return beer.id == favoriteItem.id
-        })
-        
+        }) else {
+            return false
+        }
+
         if isContain {
             return true
         }
-        
+
         return false
     }
 }

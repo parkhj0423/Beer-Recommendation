@@ -16,6 +16,7 @@ struct BeerDetailView: View {
     var item : BeerEntity
     
     @State private var showNavigationTitle : Bool = false
+    @State private var isFavorite : Bool = false
     
     init(viewModel : BeerViewModel, item : BeerEntity) {
         self.viewModel = viewModel
@@ -33,7 +34,7 @@ struct BeerDetailView: View {
             }
         }
         .onAppear {
-            print(PreferenceUtil().getFavoriteList())
+            self.isFavorite = viewModel.isFavorite(beer: item)
         }
         .navigationBarHidden(true)
         .coordinateSpace(name: "SCROLL")
@@ -135,11 +136,13 @@ struct BeerDetailView: View {
             Button {
                 if viewModel.isFavorite(beer: item) {
                     viewModel.removeFavorite(beer: item)
+                    self.isFavorite = false
                 } else {
                     viewModel.addFavorite(beer: item)
+                    self.isFavorite = true
                 }
             } label: {
-                Image(systemName: viewModel.isFavorite(beer: item) ? "suit.heart.fill" : "suit.heart")
+                Image(systemName: self.isFavorite ? "suit.heart.fill" : "suit.heart")
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                     .background(.white)
                     .clipShape(Circle())

@@ -20,20 +20,20 @@ struct CustomSheetViewModifier : ViewModifier {
                     if sheetManager.sheetType == .bottomSheet {
                         switch sheetManager.sheetState {
                         default :
-                            bottomSheetView(content: CommentView(), height: height / 3)
+                            bottomSheetView(content: FavoriteView(), height: height / 3)
                         }
                     }
                 }
                 .fullScreenCover(isPresented: $sheetManager.isFullScreenSheet, onDismiss: { sheetManager.dismissSheet() }) {
                         switch sheetManager.sheetState {
                         default :
-                            CommentView()
+                            FavoriteView()
                         }
                     }
                 .sheet(isPresented: $sheetManager.isRegularSheet, onDismiss: { sheetManager.dismissSheet() }) {
                         switch sheetManager.sheetState {
                         default :
-                            CommentView()
+                            FavoriteView()
                         }
                     }
         }
