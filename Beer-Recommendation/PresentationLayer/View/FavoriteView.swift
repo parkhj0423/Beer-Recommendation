@@ -13,11 +13,17 @@ struct FavoriteView: View {
     
     @State private var favoriteList : [BeerEntity] = []
     
+    @State private var currentIndex : Int = 0
+    
     var body: some View {
         VStack {
-            ForEach(favoriteList) { favoriteItem in
-                Text(favoriteItem.name ?? "")
+            CustomCarousel(id: \.id, cardPadding: 150, items: favoriteList, index: $currentIndex) { item, size in
+                AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: size.height)
+                    .aspectRatio(contentMode: .fill)
+//                    .clipShape(RoundedRectangle(cornerSize: 20, style: .continuous))
+                    .contentShape(Rectangle())
             }
+            .padding(.horizontal, -15)
         }
         .onAppear {
             self.favoriteList = PreferenceUtil().getFavoriteList()

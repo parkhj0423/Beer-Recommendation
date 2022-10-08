@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C4153AB28E88E0F00A6B496 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */; };
+		8C4153B028F1BC0200A6B496 /* CustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153AF28F1BC0200A6B496 /* CustomCarousel.swift */; };
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
 		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
 		D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		8C4153AF28F1BC0200A6B496 /* CustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarousel.swift; sourceTree = "<group>"; };
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetViewModifier.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				D2BEF0D528AA3E6C0003BA5F /* ErrorModal.swift */,
 				D2AB36A728BD09C600F41EC8 /* AsyncImageLoader.swift */,
 				D2AB36A928BDE7D700F41EC8 /* CustomTextField.swift */,
+				8C4153AF28F1BC0200A6B496 /* CustomCarousel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				D2AB36B528C0E5C900F41EC8 /* BeerDetailView.swift in Sources */,
 				D2BEF0AE289FA1750003BA5F /* BeerRepositoryInterface.swift in Sources */,
 				8C4153AB28E88E0F00A6B496 /* UserDefaultWrapper.swift in Sources */,
+				8C4153B028F1BC0200A6B496 /* CustomCarousel.swift in Sources */,
 				D2BEF0AA289FA0730003BA5F /* BeerEntity.swift in Sources */,
 				D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */,
 				D2BEF0CD28A93CEB0003BA5F /* View.swift in Sources */,
