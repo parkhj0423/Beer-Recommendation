@@ -11,14 +11,18 @@ struct FavoriteView: View {
     
     @EnvironmentObject var sheetManager : SheetManager
     
+    @State private var favoriteList : [BeerEntity] = []
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(PreferenceUtil.favoriteList ?? []) { favoriteItem in
-                    Text(favoriteItem.name ?? "")
-                }
+        VStack {
+            ForEach(favoriteList) { favoriteItem in
+                Text(favoriteItem.name ?? "")
             }
         }
+        .onAppear {
+            self.favoriteList = PreferenceUtil().getFavoriteList()
+        }
+        
     }
     
 }
