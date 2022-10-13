@@ -54,9 +54,11 @@ struct CustomCarousel<Content : View, Item ,ID >: View where Item : RandomAccess
                     let index = indexOf(item: item)
                     
                     content(item, CGSize(width: size.width - cardPadding, height: size.height))
-                    // 5도 만큼 각 item을 회전
+                        // 5도 만큼 각 item을 회전
                         .rotationEffect(.init(degrees: Double(index) * 5), anchor: .bottom)
                         .rotationEffect(.init(degrees: rotation), anchor: .bottom)
+                        // 부드러운 애니메이션을 위한 offset
+                        .offset(y : offsetY(index: index, cardWidth: cardWidth))
                         .frame(width: size.width - cardPadding, height: size.height)
                         .contentShape(Rectangle())
                 }
@@ -86,6 +88,17 @@ struct CustomCarousel<Content : View, Item ,ID >: View where Item : RandomAccess
         .animation(.easeOut, value: translation == 0)
     }
     
+    private func offsetY(index : Int, cardWidth : CGFloat) -> CGFloat {
+        let progress = ((translation < 0 ? translation : -translation) / cardWidth) * 60
+        let yOffset = -progress < 60 ? progress : -(progress + 120)
+        
+        let previous = (index - 1) == self.index ? (translation < 0 ? yOffset : -yOffset) : 0
+        let next = (index + 1) == self.index ? (translation < 0 ? -yOffset : yOffset) : 0
+        let In_Between = (index - 1) == self.index ? previous : next
+        
+        return index == self.index ? -60 - yOffset : In_Between
+    }
+    
     private func indexOf(item : Item.Element) -> Int {
         let array = Array(items)
         if let index = array.firstIndex(of: item) {
@@ -111,7 +124,7 @@ struct CustomCarousel<Content : View, Item ,ID >: View where Item : RandomAccess
         offset = translationX + lastStoredOffset
         
         let progress = offset / cardWidth
-        rotation = (progress * 5).rounded()
+        rotation = (progress * 5).rounded() - 1
     }
     
     private func onEnded(value : DragGesture.Value, cardWidth : CGFloat) {

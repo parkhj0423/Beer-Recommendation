@@ -9,6 +9,10 @@ import Foundation
 
 // MARK: - BeerEntity
 struct BeerEntity : Codable, Identifiable, Equatable {
+    static func == (lhs: BeerEntity, rhs: BeerEntity) -> Bool {
+       return  lhs.id == rhs.id
+    }
+    
     let id: Int
     let name, tagline, firstBrewed, description: String?
     let imageUrl: String?
