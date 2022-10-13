@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomCarousel<Content : View, Item : RandomAccessCollection, ID : Hashable>: View {
+struct CustomCarousel<Content : View, Item ,ID >: View where Item : RandomAccessCollection, ID : Hashable , Item.Element : Equatable {
     
     var content : (Item.Element, CGSize) -> Content
     var id : KeyPath<Item.Element, ID>
@@ -23,6 +23,8 @@ struct CustomCarousel<Content : View, Item : RandomAccessCollection, ID : Hashab
     @GestureState var translation : CGFloat = 0
     @State var offset : CGFloat = 0
     @State var lastStoredOffset : CGFloat = 0
+    
+    @State var rotation : Double = 0
     
     init(
          id: KeyPath<Item.Element, ID>,
@@ -48,7 +50,13 @@ struct CustomCarousel<Content : View, Item : RandomAccessCollection, ID : Hashab
             let cardWidth = size.width - (cardPadding - spacing)
             LazyHStack(spacing : spacing) {
                 ForEach(items, id: id) { item in
+                    
+                    let index = indexOf(item: item)
+                    
                     content(item, CGSize(width: size.width - cardPadding, height: size.height))
+                    // 5도 만큼 각 item을 회전
+                        .rotationEffect(.init(degrees: Double(index) * 5), anchor: .bottom)
+                        .rotationEffect(.init(degrees: rotation), anchor: .bottom)
                         .frame(width: size.width - cardPadding, height: size.height)
                         .contentShape(Rectangle())
                 }
@@ -75,6 +83,15 @@ struct CustomCarousel<Content : View, Item : RandomAccessCollection, ID : Hashab
             offset = extraSpace
             lastStoredOffset = extraSpace
         }
+        .animation(.easeOut, value: translation == 0)
+    }
+    
+    private func indexOf(item : Item.Element) -> Int {
+        let array = Array(items)
+        if let index = array.firstIndex(of: item) {
+            return index
+        }
+        return 0
     }
     
     private func limitScroll() -> CGFloat {
@@ -92,6 +109,9 @@ struct CustomCarousel<Content : View, Item : RandomAccessCollection, ID : Hashab
     private func onChanged(value : DragGesture.Value, cardWidth : CGFloat) {
         let translationX = value.translation.width
         offset = translationX + lastStoredOffset
+        
+        let progress = offset / cardWidth
+        rotation = (progress * 5).rounded()
     }
     
     private func onEnded(value : DragGesture.Value, cardWidth : CGFloat) {
@@ -100,7 +120,7 @@ struct CustomCarousel<Content : View, Item : RandomAccessCollection, ID : Hashab
         _index = min(_index, 0)
         
         currentIndex = Int(_index)
-        
+        index = -currentIndex
         withAnimation(.easeInOut(duration: 0.25)) {
             // 공간 제거
             let extraSpace = (cardPadding / 2) - spacing
