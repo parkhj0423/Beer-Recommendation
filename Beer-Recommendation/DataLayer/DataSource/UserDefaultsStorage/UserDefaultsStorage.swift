@@ -1,5 +1,5 @@
 //
-//  PreferenceUtil.swift
+//  UserDefaultsStorage.swift
 //  Beer-Recommendation
 //
 //  Created by Catius_Macbook_Air on 2022/08/23.
@@ -9,27 +9,27 @@ import Foundation
 
 let FAVORITE = "favorite"
 
-class PreferenceUtil : NSObject {
+class UserDefaultsStorage : NSObject {
     @UserDefaultWrapper(key: FAVORITE, defaultValue: nil) static var favoriteList : [BeerEntity]?
     
     func getFavoriteList() -> [BeerEntity] {
-        return PreferenceUtil.favoriteList ?? []
+        return UserDefaultsStorage.favoriteList ?? []
     }
     
     func addFavorite(beer : BeerEntity) {
-        PreferenceUtil.favoriteList?.append(beer)
+        UserDefaultsStorage.favoriteList?.append(beer)
     }
     
     func removeFavorite(beer : BeerEntity) {
-        let filteredList =  PreferenceUtil.favoriteList?.filter({ favoriteItem in
+        let filteredList =  UserDefaultsStorage.favoriteList?.filter({ favoriteItem in
             return beer.id != favoriteItem.id
         })
         
-        PreferenceUtil.favoriteList = filteredList
+        UserDefaultsStorage.favoriteList = filteredList
     }
     
     func isFavorite(beer : BeerEntity) -> Bool {
-        guard let isContain = PreferenceUtil.favoriteList?.contains(where: { favoriteItem in
+        guard let isContain = UserDefaultsStorage.favoriteList?.contains(where: { favoriteItem in
             return beer.id == favoriteItem.id
         }) else {
             return false

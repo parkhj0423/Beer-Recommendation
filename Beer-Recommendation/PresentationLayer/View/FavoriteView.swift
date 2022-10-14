@@ -18,10 +18,12 @@ struct FavoriteView: View {
     var body: some View {
         VStack {
             CustomCarousel(id: \.id, cardPadding: 150, items: favoriteList, index: $currentIndex) { item, size in
-                AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: size.height)
+                AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: 500)
+                    .background(.red)
                     .aspectRatio(contentMode: .fill)
-//                    .clipShape(RoundedRectangle(cornerSize: 20, style: .continuous))
-                    .contentShape(Rectangle())
+                    .overlay {
+                        Text(item.name ?? "")
+                    }
             }
             .padding(.horizontal, -15)
         }

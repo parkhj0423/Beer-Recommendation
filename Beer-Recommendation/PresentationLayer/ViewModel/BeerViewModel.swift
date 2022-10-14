@@ -168,15 +168,15 @@ final class BeerViewModel : ObservableObject {
     }
     
     public func addFavorite(beer : BeerEntity) {
-        PreferenceUtil().addFavorite(beer: beer)
+        UserDefaultsStorage().addFavorite(beer: beer)
     }
     
     public func removeFavorite(beer : BeerEntity) {
-        PreferenceUtil().removeFavorite(beer: beer)
+        UserDefaultsStorage().removeFavorite(beer: beer)
     }
     
     public func isFavorite(beer : BeerEntity) -> Bool {
-        return PreferenceUtil().isFavorite(beer: beer)
+        return UserDefaultsStorage().isFavorite(beer: beer)
     }
     
     public func isLastItem(index : Int) -> Bool {

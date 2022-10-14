@@ -17,4 +17,13 @@ struct AppDIContainer {
         
         return beerViewModel
     }
+    
+    @MainActor static func getFavoriteDependencies() -> FavoriteViewModel {
+        let beerDataSource : BeerDataSourceInterface = BeerDataSource()
+        let beerRepository : UserDefaultsRepositoryInterface = UserDefaultsRepository(dataSource: beerDataSource)
+        let beerUseCase : BeerUseCaseInterface = BeerUseCase(repository: beerRepository)
+        let beerViewModel : FavoriteViewModel = FavoriteViewModel(useCase: beerUseCase)
+
+        return beerViewModel
+    }
 }

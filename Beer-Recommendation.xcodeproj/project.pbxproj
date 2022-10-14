@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		8C4153AB28E88E0F00A6B496 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */; };
 		8C4153B028F1BC0200A6B496 /* CustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153AF28F1BC0200A6B496 /* CustomCarousel.swift */; };
+		8C4153B228F9A9ED00A6B496 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153B128F9A9ED00A6B496 /* FavoriteViewModel.swift */; };
+		8C4153B628F9B04500A6B496 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153B528F9B04500A6B496 /* UserDefaultsRepository.swift */; };
+		8C4153BA28F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153B928F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift */; };
+		8C4153BC28F9B2BB00A6B496 /* FavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153BB28F9B2BB00A6B496 /* FavoriteUseCase.swift */; };
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
 		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
 		D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */; };
 		D2445B9428B13DBA001FB9DE /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9328B13DBA001FB9DE /* FavoriteView.swift */; };
 		D2445B9728B27A27001FB9DE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9628B27A27001FB9DE /* CustomTabBar.swift */; };
-		D2445C3A28B51D6B001FB9DE /* PreferenceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445C3928B51D6B001FB9DE /* PreferenceUtil.swift */; };
+		D2445C3A28B51D6B001FB9DE /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445C3928B51D6B001FB9DE /* UserDefaultsStorage.swift */; };
 		D2445C3D28B5225A001FB9DE /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445C3C28B5225A001FB9DE /* ViewRouter.swift */; };
 		D2AB36A228BA14BB00F41EC8 /* BeerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36A128BA14BB00F41EC8 /* BeerListItemView.swift */; };
 		D2AB36A428BA2F0500F41EC8 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB36A328BA2F0500F41EC8 /* NavigationBarModifier.swift */; };
@@ -71,12 +75,16 @@
 /* Begin PBXFileReference section */
 		8C4153AA28E88E0F00A6B496 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		8C4153AF28F1BC0200A6B496 /* CustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarousel.swift; sourceTree = "<group>"; };
+		8C4153B128F9A9ED00A6B496 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		8C4153B528F9B04500A6B496 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
+		8C4153B928F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepositoryInterface.swift; sourceTree = "<group>"; };
+		8C4153BB28F9B2BB00A6B496 /* FavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUseCase.swift; sourceTree = "<group>"; };
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetViewModifier.swift; sourceTree = "<group>"; };
 		D2445B9328B13DBA001FB9DE /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		D2445B9628B27A27001FB9DE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
-		D2445C3928B51D6B001FB9DE /* PreferenceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceUtil.swift; sourceTree = "<group>"; };
+		D2445C3928B51D6B001FB9DE /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		D2445C3C28B5225A001FB9DE /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		D2AB36A128BA14BB00F41EC8 /* BeerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListItemView.swift; sourceTree = "<group>"; };
 		D2AB36A328BA2F0500F41EC8 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
@@ -150,12 +158,44 @@
 			path = PropertyWrapper;
 			sourceTree = "<group>";
 		};
-		8C4153AC28E8918000A6B496 /* Preference */ = {
+		8C4153AC28E8918000A6B496 /* UserDefaultsStorage */ = {
 			isa = PBXGroup;
 			children = (
-				D2445C3928B51D6B001FB9DE /* PreferenceUtil.swift */,
+				D2445C3928B51D6B001FB9DE /* UserDefaultsStorage.swift */,
 			);
-			path = Preference;
+			path = UserDefaultsStorage;
+			sourceTree = "<group>";
+		};
+		8C4153B328F9AE1500A6B496 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				8C4153B528F9B04500A6B496 /* UserDefaultsRepository.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		8C4153B428F9AE1C00A6B496 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				D2BEF0B1289FA1870003BA5F /* BeerRepository.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		8C4153B728F9B05A00A6B496 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				D2BEF0AD289FA1750003BA5F /* BeerRepositoryInterface.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		8C4153B828F9B06200A6B496 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				8C4153B928F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		D21CF566289AB7EB00A0291B /* DataLayer */ = {
@@ -207,6 +247,7 @@
 				D2445B8C28AFCC9B001FB9DE /* EnvironmentObject */,
 				D2BEF0D228AA3A820003BA5F /* ViewModelError */,
 				D2BEF0AB289FA1630003BA5F /* BeerViewModel.swift */,
+				8C4153B128F9A9ED00A6B496 /* FavoriteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -224,6 +265,7 @@
 			children = (
 				D21CF56D289AB83F00A0291B /* RepositoryInterface */,
 				D2BEF0AF289FA17D0003BA5F /* BeerUseCase.swift */,
+				8C4153BB28F9B2BB00A6B496 /* FavoriteUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -231,7 +273,8 @@
 		D21CF56D289AB83F00A0291B /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
-				D2BEF0AD289FA1750003BA5F /* BeerRepositoryInterface.swift */,
+				8C4153B728F9B05A00A6B496 /* Remote */,
+				8C4153B828F9B06200A6B496 /* Local */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -239,6 +282,7 @@
 		D21CF56E289AB85100A0291B /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153AC28E8918000A6B496 /* UserDefaultsStorage */,
 				D2BEF0A7289ED3900003BA5F /* BeerDataSource.swift */,
 			);
 			path = DataSource;
@@ -255,7 +299,8 @@
 		D21CF570289AB86100A0291B /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				D2BEF0B1289FA1870003BA5F /* BeerRepository.swift */,
+				8C4153B428F9AE1C00A6B496 /* Remote */,
+				8C4153B328F9AE1500A6B496 /* Local */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -272,7 +317,6 @@
 		D21CF572289AB87F00A0291B /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
-				8C4153AC28E8918000A6B496 /* Preference */,
 				8C4153A928E88DFC00A6B496 /* PropertyWrapper */,
 				D2BEF0A1289EC4480003BA5F /* Network */,
 				D2AB36BB28CA0B8200F41EC8 /* ScrollViewUtil.swift */,
@@ -581,7 +625,7 @@
 				D2AB36AE28BDF4E900F41EC8 /* UIApplication.swift in Sources */,
 				D2AB36BC28CA0B8200F41EC8 /* ScrollViewUtil.swift in Sources */,
 				D2AB36A628BBAD8C00F41EC8 /* BeerRecommendView.swift in Sources */,
-				D2445C3A28B51D6B001FB9DE /* PreferenceUtil.swift in Sources */,
+				D2445C3A28B51D6B001FB9DE /* UserDefaultsStorage.swift in Sources */,
 				D2AB36A228BA14BB00F41EC8 /* BeerListItemView.swift in Sources */,
 				D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */,
 				D2BEF0A8289ED3900003BA5F /* BeerDataSource.swift in Sources */,
@@ -591,7 +635,10 @@
 				D2CC6B1C28B6697C00232F92 /* MainTabView.swift in Sources */,
 				D2BEF0D628AA3E6C0003BA5F /* ErrorModal.swift in Sources */,
 				D2BEF0A6289ED29F0003BA5F /* BeerDTO.swift in Sources */,
+				8C4153BA28F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift in Sources */,
+				8C4153B228F9A9ED00A6B496 /* FavoriteViewModel.swift in Sources */,
 				D2445B9428B13DBA001FB9DE /* FavoriteView.swift in Sources */,
+				8C4153B628F9B04500A6B496 /* UserDefaultsRepository.swift in Sources */,
 				D2C02C2428DF525200F7ACEC /* BlurBackgroundView.swift in Sources */,
 				D2B36D4C2890DEB9009C5127 /* Beer_RecommendationApp.swift in Sources */,
 				D2BEF0CA28A7E5220003BA5F /* AppDIContainer.swift in Sources */,
@@ -599,6 +646,7 @@
 				D2BEF0D128A9485F0003BA5F /* ErrorModalViewModifier.swift in Sources */,
 				D2445B9728B27A27001FB9DE /* CustomTabBar.swift in Sources */,
 				D2AB36B528C0E5C900F41EC8 /* BeerDetailView.swift in Sources */,
+				8C4153BC28F9B2BB00A6B496 /* FavoriteUseCase.swift in Sources */,
 				D2BEF0AE289FA1750003BA5F /* BeerRepositoryInterface.swift in Sources */,
 				8C4153AB28E88E0F00A6B496 /* UserDefaultWrapper.swift in Sources */,
 				8C4153B028F1BC0200A6B496 /* CustomCarousel.swift in Sources */,
