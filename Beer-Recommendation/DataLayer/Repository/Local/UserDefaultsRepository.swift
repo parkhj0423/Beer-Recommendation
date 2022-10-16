@@ -9,11 +9,26 @@ import Foundation
 
 final class UserDefaultsRepository : UserDefaultsRepositoryInterface {
     
-    private let dataSource : BeerDataSourceInterface
+    private let userDefaultsStorage : UserDefaultsStorage = UserDefaultsStorage()
     
-    public init(dataSource : BeerDataSourceInterface) {
-        self.dataSource = dataSource
+    func getFavoriteList() -> [BeerEntity] {
+        return userDefaultsStorage.getFavoriteList()
     }
     
+    func addFavorite(beer : BeerEntity) -> [BeerEntity] {
+        userDefaultsStorage.addFavorite(beer: beer)
+        
+        return userDefaultsStorage.getFavoriteList()
+    }
     
+    func removeFavorite(beer : BeerEntity) -> [BeerEntity] {
+        userDefaultsStorage.removeFavorite(beer: beer)
+        
+        return userDefaultsStorage.getFavoriteList()
+    }
+    
+    func isFavorite(beer : BeerEntity) -> Bool {
+        return userDefaultsStorage.isFavorite(beer: beer)
+    }
+        
 }

@@ -8,6 +8,8 @@
 import Foundation
 
 protocol UserDefaultsRepositoryInterface {
-//    func getBeersWithPaging(page : Int, size : Int) async throws -> [BeerEntity]
-
+    func getFavoriteList() -> [BeerEntity]
+    func addFavorite(beer : BeerEntity) -> [BeerEntity]
+    func removeFavorite(beer : BeerEntity) -> [BeerEntity]
+    func isFavorite(beer : BeerEntity) -> Bool
 }

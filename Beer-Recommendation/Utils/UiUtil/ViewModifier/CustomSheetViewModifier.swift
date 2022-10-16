@@ -20,20 +20,20 @@ struct CustomSheetViewModifier : ViewModifier {
                     if sheetManager.sheetType == .bottomSheet {
                         switch sheetManager.sheetState {
                         default :
-                            bottomSheetView(content: FavoriteView(), height: height / 3)
+                            bottomSheetView(content: FavoriteView(viewModel: AppDIContainer.getFavoriteDependencies()), height: height / 3)
                         }
                     }
                 }
                 .fullScreenCover(isPresented: $sheetManager.isFullScreenSheet, onDismiss: { sheetManager.dismissSheet() }) {
                         switch sheetManager.sheetState {
                         default :
-                            FavoriteView()
+                            FavoriteView(viewModel: AppDIContainer.getFavoriteDependencies())
                         }
                     }
                 .sheet(isPresented: $sheetManager.isRegularSheet, onDismiss: { sheetManager.dismissSheet() }) {
                         switch sheetManager.sheetState {
                         default :
-                            FavoriteView()
+                            FavoriteView(viewModel: AppDIContainer.getFavoriteDependencies())
                         }
                     }
         }

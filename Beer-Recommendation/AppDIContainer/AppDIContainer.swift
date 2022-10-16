@@ -13,17 +13,20 @@ struct AppDIContainer {
         let beerDataSource : BeerDataSourceInterface = BeerDataSource()
         let beerRepository : BeerRepositoryInterface = BeerRepository(dataSource: beerDataSource)
         let beerUseCase : BeerUseCaseInterface = BeerUseCase(repository: beerRepository)
-        let beerViewModel : BeerViewModel = BeerViewModel(useCase: beerUseCase)
+        
+        let userDefaultRepository : UserDefaultsRepositoryInterface = UserDefaultsRepository()
+        let favoriteUseCase : FavoriteUseCaseInterface = FavoriteUseCase(repository: userDefaultRepository)
+        
+        let beerViewModel : BeerViewModel = BeerViewModel(beerUseCase: beerUseCase, favoriteUseCase: favoriteUseCase)
         
         return beerViewModel
     }
     
     @MainActor static func getFavoriteDependencies() -> FavoriteViewModel {
-        let beerDataSource : BeerDataSourceInterface = BeerDataSource()
-        let beerRepository : UserDefaultsRepositoryInterface = UserDefaultsRepository(dataSource: beerDataSource)
-        let beerUseCase : BeerUseCaseInterface = BeerUseCase(repository: beerRepository)
-        let beerViewModel : FavoriteViewModel = FavoriteViewModel(useCase: beerUseCase)
+        let userDefaultRepository : UserDefaultsRepositoryInterface = UserDefaultsRepository()
+        let favoriteUseCase : FavoriteUseCaseInterface = FavoriteUseCase(repository: userDefaultRepository)
+        let favoriteViewModel : FavoriteViewModel = FavoriteViewModel(useCase: favoriteUseCase)
 
-        return beerViewModel
+        return favoriteViewModel
     }
 }

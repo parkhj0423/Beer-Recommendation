@@ -10,14 +10,13 @@ import SwiftUI
 struct FavoriteView: View {
     
     @EnvironmentObject var sheetManager : SheetManager
-    
-    @State private var favoriteList : [BeerEntity] = []
+    @StateObject var viewModel : FavoriteViewModel
     
     @State private var currentIndex : Int = 0
     
     var body: some View {
         VStack {
-            CustomCarousel(id: \.id, cardPadding: 150, items: favoriteList, index: $currentIndex) { item, size in
+            CustomCarousel(id: \.id, cardPadding: 150, items: viewModel.favoriteList, index: $currentIndex) { item, size in
                 AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: 500)
                     .background(.red)
                     .aspectRatio(contentMode: .fill)
@@ -28,15 +27,10 @@ struct FavoriteView: View {
             .padding(.horizontal, -15)
         }
         .onAppear {
-            self.favoriteList = PreferenceUtil().getFavoriteList()
+            viewModel.getFavoriteList()
         }
         
     }
     
 }
 
-struct FavoriteView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteView()
-    }
-}

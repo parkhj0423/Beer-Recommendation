@@ -31,7 +31,7 @@ struct MainTabView: View {
                     }
                     
                     tabBarItem(tag: 1) {
-                        FavoriteView()
+                        FavoriteView(viewModel: AppDIContainer.getFavoriteDependencies())
                     }
                 }
                 

@@ -21,7 +21,8 @@ public enum Category : String, CaseIterable {
 @MainActor
 final class BeerViewModel : ObservableObject {
     
-    private let useCase: BeerUseCaseInterface
+    private let beerUseCase : BeerUseCaseInterface
+    private let favoriteUseCase : FavoriteUseCaseInterface
     private var bag: Set<AnyCancellable> = Set<AnyCancellable>()
     
     @Published public var beers : [BeerEntity] = []
@@ -37,8 +38,9 @@ final class BeerViewModel : ObservableObject {
     private var currentSize : Int = 10
     private var isEmptyListCalled : Bool = false
     
-    init(useCase : BeerUseCaseInterface) {
-        self.useCase = useCase
+    init(beerUseCase : BeerUseCaseInterface, favoriteUseCase : FavoriteUseCaseInterface) {
+        self.beerUseCase = beerUseCase
+        self.favoriteUseCase = favoriteUseCase
         inputKeyword()
     }
     
@@ -52,13 +54,13 @@ final class BeerViewModel : ObservableObject {
             var beers : [BeerEntity] = []
             
             if let page = page {
-                beers = try await useCase.getBeersWithPaging(page: page, size: currentSize)
+                beers = try await beerUseCase.getBeersWithPaging(page: page, size: currentSize)
                 self.currentPage = 1
                 self.beers = beers
                 self.isEmptyListCalled = false
             } else {
                 if !isEmptyListCalled {
-                    beers = try await useCase.getBeersWithPaging(page: currentPage, size: currentSize)
+                    beers = try await beerUseCase.getBeersWithPaging(page: currentPage, size: currentSize)
                 } 
                 if beers.isEmpty {
                     self.isEmptyListCalled = true
@@ -80,7 +82,7 @@ final class BeerViewModel : ObservableObject {
         cleanError()
         do {
             self.isLoading = true
-            let randomBeer = try await useCase.getRandomBeer()
+            let randomBeer = try await beerUseCase.getRandomBeer()
             self.randomBeer = randomBeer
             self.isLoading = false
         } catch NetworkError.internetConnectionError {
@@ -113,7 +115,7 @@ final class BeerViewModel : ObservableObject {
         cleanError()
         do {
             self.isLoading = true
-            let searchedBeers = try await useCase.getBeerWithKeyword(keyword: keyword)
+            let searchedBeers = try await beerUseCase.getBeerWithKeyword(keyword: keyword)
             self.searchedBeers = searchedBeers
             self.isLoading = false
             
@@ -127,7 +129,7 @@ final class BeerViewModel : ObservableObject {
         cleanError()
         do {
             self.isLoading = true
-            let beersByCategory = try await useCase.getBeersByCategory(category: self.selectedCategory)
+            let beersByCategory = try await beerUseCase.getBeersByCategory(category: self.selectedCategory)
             self.beers = beersByCategory
             self.isLoading = false
             
@@ -168,15 +170,15 @@ final class BeerViewModel : ObservableObject {
     }
     
     public func addFavorite(beer : BeerEntity) {
-        UserDefaultsStorage().addFavorite(beer: beer)
+        let _ = favoriteUseCase.addFavorite(beer: beer)
     }
     
     public func removeFavorite(beer : BeerEntity) {
-        UserDefaultsStorage().removeFavorite(beer: beer)
+        let _ = favoriteUseCase.removeFavorite(beer: beer)
     }
     
     public func isFavorite(beer : BeerEntity) -> Bool {
-        return UserDefaultsStorage().isFavorite(beer: beer)
+        return favoriteUseCase.isFavorite(beer: beer)
     }
     
     public func isLastItem(index : Int) -> Bool {

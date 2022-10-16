@@ -169,6 +169,7 @@
 		8C4153B328F9AE1500A6B496 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153AC28E8918000A6B496 /* UserDefaultsStorage */,
 				8C4153B528F9B04500A6B496 /* UserDefaultsRepository.swift */,
 			);
 			path = Local;
@@ -282,7 +283,6 @@
 		D21CF56E289AB85100A0291B /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				8C4153AC28E8918000A6B496 /* UserDefaultsStorage */,
 				D2BEF0A7289ED3900003BA5F /* BeerDataSource.swift */,
 			);
 			path = DataSource;
