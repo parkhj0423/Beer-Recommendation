@@ -17,12 +17,17 @@ struct FavoriteView: View {
     var body: some View {
         VStack {
             CustomCarousel(id: \.id, cardPadding: 150, items: viewModel.favoriteList, index: $currentIndex) { item, size in
-                AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: 500)
-                    .background(.red)
-                    .aspectRatio(contentMode: .fill)
-                    .overlay {
-                        Text(item.name ?? "")
-                    }
+                ZStack {
+                    BlurBackgroundView()
+                    
+                    AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: 500)
+                        .aspectRatio(contentMode: .fill)
+                        .overlay {
+                            Text(item.name ?? "")
+                        }
+                }
+                
+                
             }
             .padding(.horizontal, -15)
         }
