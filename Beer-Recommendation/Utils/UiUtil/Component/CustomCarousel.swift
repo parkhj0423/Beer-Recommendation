@@ -55,8 +55,8 @@ struct CustomCarousel<Content : View, Item ,ID >: View where Item : RandomAccess
                     
                     content(item, CGSize(width: size.width - cardPadding, height: size.height))
                         // 5도 만큼 각 item을 회전
-                        .rotationEffect(.init(degrees: Double(index) * 5), anchor: .bottom)
-                        .rotationEffect(.init(degrees: rotation), anchor: .bottom)
+//                        .rotationEffect(.init(degrees: Double(index) * 5), anchor: .bottom)
+//                        .rotationEffect(.init(degrees: rotation), anchor: .bottom)
                         // 부드러운 애니메이션을 위한 offset
                         .offset(y : offsetY(index: index, cardWidth: cardWidth))
                         .frame(width: size.width - cardPadding, height: size.height)

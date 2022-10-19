@@ -15,22 +15,29 @@ struct FavoriteView: View {
     @State private var currentIndex : Int = 0
     
     var body: some View {
-        VStack {
-            CustomCarousel(id: \.id, cardPadding: 150, items: viewModel.favoriteList, index: $currentIndex) { item, size in
+        ZStack {
+            BlurBackgroundView()
+            
+            CustomCarousel(id: \.id, cardPadding: 170, items: viewModel.favoriteList, index: $currentIndex) { item, size in
                 ZStack {
-                    BlurBackgroundView()
                     
-                    AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: 500)
-                        .aspectRatio(contentMode: .fill)
-                        .overlay {
-                            Text(item.name ?? "")
-                        }
+                    VStack(spacing : 20) {
+                        AsyncImageLoader(imageUrl: item.imageUrl, width: size.width, height: 500)
+                            .aspectRatio(contentMode: .fill)
+                            
+                        Text(item.name ?? "")
+                            .font(.system(size: 20, weight: .bold))
+                        
+                        
+                    }
+                    .padding(.bottom, 20)
+                   
                 }
-                
                 
             }
             .padding(.horizontal, -15)
         }
+        .ignoresSafeArea()
         .onAppear {
             viewModel.getFavoriteList()
         }
