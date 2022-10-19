@@ -199,6 +199,20 @@
 			path = Local;
 			sourceTree = "<group>";
 		};
+		8C4153BD2900452C00A6B496 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		8C4153BE2900453200A6B496 /* ObjectMother */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ObjectMother;
+			sourceTree = "<group>";
+		};
 		D21CF566289AB7EB00A0291B /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +440,8 @@
 		D2B36D5B2890DEBA009C5127 /* Beer-RecommendationTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153BE2900453200A6B496 /* ObjectMother */,
+				8C4153BD2900452C00A6B496 /* Mock */,
 				D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */,
 			);
 			path = "Beer-RecommendationTests";

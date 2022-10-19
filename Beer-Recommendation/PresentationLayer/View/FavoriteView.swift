@@ -28,7 +28,7 @@ struct FavoriteView: View {
                         Text(item.name ?? "")
                             .font(.system(size: 20, weight: .bold))
                         
-                        
+                        favoriteButton(item: item)
                     }
                     .padding(.bottom, 20)
                    
@@ -42,6 +42,20 @@ struct FavoriteView: View {
             viewModel.getFavoriteList()
         }
         
+    }
+    
+    private func favoriteButton(item : BeerEntity) -> some View {
+        Button {
+            if viewModel.isFavorite(beer: item) {
+                viewModel.removeFavorite(beer: item)
+            }
+        } label: {
+            Image(systemName: viewModel.isFavorite(beer: item) ? "suit.heart.fill" : "suit.heart")
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                .background(.white)
+                .clipShape(Circle())
+                .foregroundColor(.red)
+        }
     }
     
 }
