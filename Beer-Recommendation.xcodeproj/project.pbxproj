@@ -13,6 +13,10 @@
 		8C4153B628F9B04500A6B496 /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153B528F9B04500A6B496 /* UserDefaultsRepository.swift */; };
 		8C4153BA28F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153B928F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift */; };
 		8C4153BC28F9B2BB00A6B496 /* FavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153BB28F9B2BB00A6B496 /* FavoriteUseCase.swift */; };
+		8C4153C2290436F400A6B496 /* BeerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153C1290436F400A6B496 /* BeerViewModelTests.swift */; };
+		8C4153C42904373000A6B496 /* MockBeerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153C32904373000A6B496 /* MockBeerUseCase.swift */; };
+		8C4153C6290437BF00A6B496 /* BeerObjectMother.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153C5290437BF00A6B496 /* BeerObjectMother.swift */; };
+		8C4153C82904388800A6B496 /* MockFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4153C72904388800A6B496 /* MockFavoriteUseCase.swift */; };
 		D21CF577289AC9D000A0291B /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CF576289AC9D000A0291B /* NetworkUtil.swift */; };
 		D2445B8E28AFCCAD001FB9DE /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */; };
 		D2445B9228B138B7001FB9DE /* CustomSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */; };
@@ -79,6 +83,10 @@
 		8C4153B528F9B04500A6B496 /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
 		8C4153B928F9B08400A6B496 /* UserDefaultsRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepositoryInterface.swift; sourceTree = "<group>"; };
 		8C4153BB28F9B2BB00A6B496 /* FavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUseCase.swift; sourceTree = "<group>"; };
+		8C4153C1290436F400A6B496 /* BeerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModelTests.swift; sourceTree = "<group>"; };
+		8C4153C32904373000A6B496 /* MockBeerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBeerUseCase.swift; sourceTree = "<group>"; };
+		8C4153C5290437BF00A6B496 /* BeerObjectMother.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerObjectMother.swift; sourceTree = "<group>"; };
+		8C4153C72904388800A6B496 /* MockFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoriteUseCase.swift; sourceTree = "<group>"; };
 		D21CF576289AC9D000A0291B /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		D2445B8D28AFCCAD001FB9DE /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 		D2445B9128B138B7001FB9DE /* CustomSheetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetViewModifier.swift; sourceTree = "<group>"; };
@@ -202,6 +210,7 @@
 		8C4153BD2900452C00A6B496 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153BF2904366F00A6B496 /* UseCase */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -209,8 +218,26 @@
 		8C4153BE2900453200A6B496 /* ObjectMother */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153C5290437BF00A6B496 /* BeerObjectMother.swift */,
 			);
 			path = ObjectMother;
+			sourceTree = "<group>";
+		};
+		8C4153BF2904366F00A6B496 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				8C4153C32904373000A6B496 /* MockBeerUseCase.swift */,
+				8C4153C72904388800A6B496 /* MockFavoriteUseCase.swift */,
+			);
+			name = UseCase;
+			sourceTree = "<group>";
+		};
+		8C4153C02904368300A6B496 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C4153C1290436F400A6B496 /* BeerViewModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 		D21CF566289AB7EB00A0291B /* DataLayer */ = {
@@ -440,6 +467,7 @@
 		D2B36D5B2890DEBA009C5127 /* Beer-RecommendationTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C4153C02904368300A6B496 /* ViewModelTests */,
 				8C4153BE2900453200A6B496 /* ObjectMother */,
 				8C4153BD2900452C00A6B496 /* Mock */,
 				D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */,
@@ -676,7 +704,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C4153C2290436F400A6B496 /* BeerViewModelTests.swift in Sources */,
+				8C4153C6290437BF00A6B496 /* BeerObjectMother.swift in Sources */,
 				D2B36D5D2890DEBA009C5127 /* Beer_RecommendationTests.swift in Sources */,
+				8C4153C82904388800A6B496 /* MockFavoriteUseCase.swift in Sources */,
+				8C4153C42904373000A6B496 /* MockBeerUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
