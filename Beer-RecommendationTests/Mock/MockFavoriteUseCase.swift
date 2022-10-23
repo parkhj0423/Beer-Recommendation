@@ -13,15 +13,15 @@ final class MockFavoriteUseCase : FavoriteUseCaseInterface {
     typealias Category = Beer_Recommendation.Category
     
     func getFavoriteList() -> [BeerEntity] {
-        return BeerObjectMother.getPagingBeerList(page: 20)
+        return BeerObjectMother.getBeerList()
     }
     
     func addFavorite(beer: BeerEntity) -> [BeerEntity] {
-        return BeerObjectMother.getPagingBeerList(page: 20)
+        return BeerObjectMother.getBeerList()
     }
     
     func removeFavorite(beer: BeerEntity) -> [BeerEntity] {
-        return BeerObjectMother.getPagingBeerList(page: 20)
+        return BeerObjectMother.getBeerList()
     }
     
     func isFavorite(beer: BeerEntity) -> Bool {
