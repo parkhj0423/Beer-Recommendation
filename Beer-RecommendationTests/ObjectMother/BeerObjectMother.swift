@@ -10,4 +10,15 @@ import Foundation
 
 class BeerObjectMother {
     
+    static let emptyBeerEntity : BeerEntity = BeerEntity(id: 1, name: nil, tagline: nil, firstBrewed: nil, description: nil, imageUrl: nil, abv: nil, ibu: nil, targetFg: nil, targetOg: nil, ebc: nil, srm: nil, ph: nil, attenuationLevel: nil, volume: nil, boilVolume: nil, method: nil, ingredients: nil, foodPairing: [], brewersTips: nil, contributedBy: nil)
+    
+    static func getPagingBeerList(page : Int? = nil) -> [BeerEntity] {
+        let beerList : [BeerEntity] = Array(repeating: emptyBeerEntity, count: page ?? 10)
+        
+        return beerList
+    }
+    
+    static func getSingleBeer() -> BeerEntity? {
+        return emptyBeerEntity
+    }
 }

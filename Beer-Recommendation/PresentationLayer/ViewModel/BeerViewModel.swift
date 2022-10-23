@@ -27,7 +27,7 @@ final class BeerViewModel : ObservableObject {
     
     @Published public var beers : [BeerEntity] = []
     @Published public var searchedBeers : [BeerEntity] = []
-    @Published public var randomBeer : [BeerEntity] = []
+    @Published public var randomBeer : BeerEntity?
     @Published public var searchKeyword : String = ""
     @Published public var selectedCategory : Category = .all
     

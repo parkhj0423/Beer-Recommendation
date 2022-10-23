@@ -38,7 +38,6 @@
 		D2B36D4E2890DEB9009C5127 /* BeerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D4D2890DEB9009C5127 /* BeerListView.swift */; };
 		D2B36D502890DEBA009C5127 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D4F2890DEBA009C5127 /* Assets.xcassets */; };
 		D2B36D532890DEBA009C5127 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B36D522890DEBA009C5127 /* Preview Assets.xcassets */; };
-		D2B36D5D2890DEBA009C5127 /* Beer_RecommendationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */; };
 		D2B36D672890DEBA009C5127 /* Beer_RecommendationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D662890DEBA009C5127 /* Beer_RecommendationUITests.swift */; };
 		D2B36D692890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B36D682890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift */; };
 		D2BEF0A3289EC45B0003BA5F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEF0A2289EC45B0003BA5F /* NetworkError.swift */; };
@@ -109,7 +108,6 @@
 		D2B36D4F2890DEBA009C5127 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B36D522890DEBA009C5127 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2B36D582890DEBA009C5127 /* Beer-RecommendationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Beer-RecommendationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationTests.swift; sourceTree = "<group>"; };
 		D2B36D622890DEBA009C5127 /* Beer-RecommendationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Beer-RecommendationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B36D662890DEBA009C5127 /* Beer_RecommendationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationUITests.swift; sourceTree = "<group>"; };
 		D2B36D682890DEBA009C5127 /* Beer_RecommendationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer_RecommendationUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -470,7 +468,6 @@
 				8C4153C02904368300A6B496 /* ViewModelTests */,
 				8C4153BE2900453200A6B496 /* ObjectMother */,
 				8C4153BD2900452C00A6B496 /* Mock */,
-				D2B36D5C2890DEBA009C5127 /* Beer_RecommendationTests.swift */,
 			);
 			path = "Beer-RecommendationTests";
 			sourceTree = "<group>";
@@ -706,7 +703,6 @@
 			files = (
 				8C4153C2290436F400A6B496 /* BeerViewModelTests.swift in Sources */,
 				8C4153C6290437BF00A6B496 /* BeerObjectMother.swift in Sources */,
-				D2B36D5D2890DEBA009C5127 /* Beer_RecommendationTests.swift in Sources */,
 				8C4153C82904388800A6B496 /* MockFavoriteUseCase.swift in Sources */,
 				8C4153C42904373000A6B496 /* MockBeerUseCase.swift in Sources */,
 			);

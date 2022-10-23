@@ -67,7 +67,7 @@ struct BeerListView: View {
     private func recommendView() -> some View {
         VStack(alignment : .leading) {
             
-            if let randomBeer = viewModel.randomBeer.first {
+            if let randomBeer = viewModel.randomBeer {
                 ZStack(alignment: .bottomTrailing) {
                     BeerRecommendView(item: randomBeer)
                     
@@ -160,7 +160,7 @@ struct BeerListView: View {
     
     @ViewBuilder
     private func moveToDetailButton() -> some View {
-        if let recommendBeer = viewModel.randomBeer.first {
+        if let recommendBeer = viewModel.randomBeer {
             NavigationLink {
                 BeerDetailView(viewModel: viewModel, item: recommendBeer)
             } label: {

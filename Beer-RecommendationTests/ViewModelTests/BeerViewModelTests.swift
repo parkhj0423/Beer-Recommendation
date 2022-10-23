@@ -29,5 +29,9 @@ final class BeerViewModelTests: XCTestCase {
     }
 
     
+    @MainActor func testShouldGetBeerListWithPaging() async throws {
+        try await viewModel.getBeersWithPaging(page: 20)
+        XCTAssertEqual(viewModel.beers.count, 20)
+    }
 
 }
