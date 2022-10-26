@@ -21,4 +21,10 @@ class BeerObjectMother {
     static func getSingleBeer() -> BeerEntity? {
         return emptyBeerEntity
     }
+    
+    static func getFavoriteBeerList() -> [BeerEntity] {
+        let beerList : [BeerEntity] = Array(repeating: emptyBeerEntity, count: 5)
+        
+        return beerList
+    }
 }
