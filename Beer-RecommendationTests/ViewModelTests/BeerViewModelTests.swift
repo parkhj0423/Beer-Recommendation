@@ -31,26 +31,44 @@ final class BeerViewModelTests: XCTestCase {
     
     
     func testShouldSuccessToGetBeerList() async throws {
+        // given
+        // when
         try await viewModel.getBeersWithPaging()
+        
+        // then
         XCTAssertEqual(viewModel.beers.count, 10)
+        XCTAssertNil(viewModel.viewModelError)
     }
     
     func testShouldFailToGetBeerListWhenFailToLoadData() async throws {
+        // given
         mockBeerUseCase.isGetBeerListSuccess = false
         
+        // when
         try await viewModel.getBeersWithPaging()
         
+        //then
         XCTAssertEqual(viewModel.viewModelError, .failToLoadData)
     }
     
     func testShouldSuccessToGetRandomBeer() async throws {
+        // given
+        // when
         try await viewModel.getRandomBeer()
+        
+        // then
         XCTAssertNotNil(viewModel.randomBeer)
+        XCTAssertNil(viewModel.viewModelError)
     }
     
     func testShouldFailToGetRandomBeerWhenFailToLoadData() async throws {
+        // given
         mockBeerUseCase.isGetRandomBeerSuccess = false
+        
+        // when
         try await viewModel.getRandomBeer()
+        
+        // then
         XCTAssertEqual(viewModel.viewModelError, .failToLoadData)
     }
 }
